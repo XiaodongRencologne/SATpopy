@@ -1,0 +1,17 @@
+<OutputFiles>
+ <File Object="unknown" Type="tci" Format="Text" Path="Job_03.tci" Hash="7be66890be6f28ce9822c62bc31dccc7" SubObject="unknown"/>
+ <File Object="unknown" Type="tor" Format="Text" Path="Job_03.tor" Hash="d604a1c7033b3b9bcc295338043d1347" SubObject="unknown"/>
+ <File Object="unknown" Type="out" Format="Text" Path="Job_03.out" Hash="e3eb67bfff3b66b740e49cec4702f159" SubObject="unknown"/>
+ <File Object="bor_mom" Type="3D:CurrentsColourPlot" Format="Bin" Path="bor_mom.cpf" Hash="dbc52a671f9b1ab8047d47bff13be4a8" SubObject="unknown">
+  <Meta Values="bor_mom" Name="CurrentObject"/>
+  <Parameter Values=" 30.0000000000000" Unit="GHz" Name="Frequency"/>
+ </File>
+ <File Object="lens_cut" Type="Cut:Spherical" Format="Ticra" Path="lens_cut.cut" Quantity="E" Hash="6da526584dac1d682012b03ee998fc5f" SubObject="unknown">
+  <Parameter Values=" 30.0000000000000" Unit="GHz" Name="Frequency"/>
+  <Parameter Values="[0.000000000000000E+000;90.0000000000000;3]" Unit="deg" Name="Phi"/>
+  <Parameter Values="[-180.000000000000;180.000000000000;601]" Unit="deg" Name="Theta"/>
+  <Scan Type="polar"/>
+ </File>
+ <File Type="Comments" Format="Text" Path="comments.txt"/>
+ <File Type="Screen" Format="Text" Path="screenoutput.txt"/>
+</OutputFiles>

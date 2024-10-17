@@ -125,13 +125,63 @@ def write_refl_multiple(name,coord_sys,surfs,rims,distortions=''):
     return Str
 
 
-'''5. write a lens'''
+'''5. write a simple lens'''
 
-def write_lens(name,coord_sys,):
+class coating_surface():
+    def __init__(self, thickness, 
+                 refractive_index,
+                 loss_tangent=0):
+        self.t0 = thickness
+        self.r_index = str(refractive_index)
+        self.loss_t = str(loss_tangent)
+
+        self.Str = 'struct(thickness:' + self.t0+',\n'
+        self.Str += 'refractive_index:' +self.r_index+',\n'
+        self.Str += 'loss_tangent:' +self.loss_t+')'
+
+def write_simple_lens(name,coord_sys,diameter,
+                      refractive_index, loss_tangent=0,
+                      r1=None, r2=None,
+                      bs1=0,bs2=0,
+                      thickness=0,
+                      surf1_file='',surf2_file='',lengthUnit_file='mm',
+                      coating_surf1='',coating_surf2=''):
     Str = ''
     Str += name + 'simple_lens\n(\n'
-    Str += '  coor_sys      : ref('+''+coord_sys+'),\n'
-    Str += ''
+    Str += '  coor_sys         :ref('+''+coord_sys+'),\n'
+    Str += '  diameter         :' + diameter+',\n'
+    Str += '  refractive_index :' + str(refractive_index) +',\n'
+    Str += '  loss_tangent     :' + str(loss_tangent) +',\n'
+    if r1 != None:
+        Str += '     r1           :'+ r1 +',\n'
+    if r2 != None:
+        Str += '     r2           :'+ r2 +',\n'
+    Str += '  bs1              :' + str(bs1) +',\n'
+    Str += '  bs2              :' + str(bs2) +',\n'
+    Str += '  thickness        :' + str(thickness) +',\n'
+    if surf1_file != '':
+        Str += '  surface1_file    :' + str(surf1_file) +',\n'
+    if surf2_file != '':
+        Str += '  surface2_file       :' + str(surf2_file) +',\n'
+    Str +=     '  length_unit_in_files :' + lengthUnit_file +',\n'
+    if coating_surf1 != '':
+        Str += '  coating_surface1     :' + coating_surf1 +',\n'
+    if coating_surf2 != '':
+        Str += '  coating_surface2     :' + coating_surf2 +',\n' 
 
+    Str += ')\n'
+    return Str
     
-    pass
+
+
+
+'''6.  write aperture in screen'''
+
+def write_aperture_scan(name,coord_sys,rim,infinity_shadow='on'):
+    Str = ''
+    Str += name + 'aperture_in_screen\n(\n'
+    Str += '  coor_sys      : ref(' + coord_sys+'),\n'
+    Str += '  rim           : ref(' + rim +'),\n'
+    Str += '  infinity_shadow: '+infinity_shadow +'\n'
+    Str += ')\n'
+    return Str

@@ -1,0 +1,12 @@
+r1  real_variable  
+(
+  value            : 0.1
+)
+ 
+thickness  real_variable  
+(
+  value            : 0.5E-01
+)
+ 
+ //$$ Saved at 14:07:40 on 28.09.2020 by TICRA Tools 20.1 SN=007582
+  

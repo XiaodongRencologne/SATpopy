@@ -1,0 +1,18 @@
+ Program started at 15:06:36 on 20 April 2020
+ 
+ TICRA Tools 20.0 (Windows amd64/em64t 64-bit)
+ 
+ TICRA Tools found  12 CPU threads
+ 
+TICRA-TOOLS>COMMAND OBJECT lens_po get_currents ( source : sequence(ref(lens_feed)),   auto_convergence_of_po : on, convergence_on_output_grid :   sequence(ref(lens_cut))) paraboloid_po_cmd 
+ ----- TASK No. 1 -----     Started at 15:06:38 on April 20, 2020                
+  PO1 =   36  PO2 =   73  Face =    1, Final PO-values from auto-convergence
+  Spill-over:     1.0338 dB
+ Total task time:  0.19 sec               
+TICRA-TOOLS>COMMAND OBJECT lens_cut get_field ( source : sequence(ref(lens_feed),   ref(lens_po))) paraboloid_get_field_cmd 
+ ----- TASK No. 2 -----     Started at 15:06:38 on April 20, 2020                
+ Total task time:  0.03 sec               
+TICRA-TOOLS>QUIT 
+ ----- END OF TASKS -----     Completed at 15:06:38 on April 20, 2020            
+ Total time was 2.83 sec
+ Program stopped at 15:06:38 on 20 April 2020

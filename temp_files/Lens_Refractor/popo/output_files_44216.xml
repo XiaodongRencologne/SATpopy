@@ -1,0 +1,17 @@
+<OutputFiles>
+ <File SubObject="unknown" Type="tci" Path="popo.tci" Object="unknown" Format="Text" Hash="105db8213b9cf1bc0a94568623d411d9"/>
+ <File SubObject="unknown" Type="tor" Path="popo.tor" Object="unknown" Format="Text" Hash="27c8369b7ecc0c0fc2c20e60d50661d5"/>
+ <File SubObject="unknown" Type="out" Path="popo.out" Object="unknown" Format="Text" Hash="411914886545779eb2036f90d95e77d8"/>
+ <File SubObject="unknown" Type="3D:CurrentsColourPlot" Path="bor_mom.cpf" Object="bor_mom" Format="Bin" Hash="4ba305f5c249a0bcac42bc2f48487a29">
+  <Meta Name="CurrentObject" Values="bor_mom"/>
+  <Parameter Unit="GHz" Name="Frequency" Values=" 30.0000000000000"/>
+ </File>
+ <File SubObject="unknown" Type="Cut:Spherical" Path="lens_cut.cut" Object="lens_cut" Format="Ticra" Quantity="E" Hash="6816e9d5084ba9219cce2d469b1514ac">
+  <Parameter Unit="GHz" Name="Frequency" Values=" 30.0000000000000"/>
+  <Parameter Unit="deg" Name="Phi" Values="[0.000000000000000E+000;90.0000000000000;3]"/>
+  <Parameter Unit="deg" Name="Theta" Values="[-180.000000000000;180.000000000000;601]"/>
+  <Scan Type="polar"/>
+ </File>
+ <File Type="Comments" Path="comments.txt" Format="Text"/>
+ <File Type="Screen" Path="screenoutput.txt" Format="Text"/>
+</OutputFiles>

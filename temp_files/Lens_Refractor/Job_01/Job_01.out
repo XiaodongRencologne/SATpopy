@@ -1,0 +1,425 @@
+ Program started at 15:06:36 on 20 April 2020
+ 
+ 
+ 
+                                     T I C R A   T o o l s
+                                     =====================
+ 
+  Antenna design software from TICRA
+ 
+ TICRA Tools 20.0 (Windows amd64/em64t 64-bit)
+ 
+ 
+ TICRA Tools found  12 CPU threads
+ 
+ Enabled products: GRASP
+  Reading tor-file: Job_01.tor
+ 
+ 
+  *** Object name:  frequency
+  *** Class name :  frequency
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  frequency
+  *** Class name :  frequency
+  *** Message    :  New values in object
+ 
+  Frequency No.    1  :   0.300000E+02 GHz
+ 
+ 
+  *** Object name:  global_coor
+  *** Class name :  coor_sys
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  global_coor
+  *** Class name :  coor_sys
+  *** Message    :  New values in object
+ 
+  Z_axis :     0.000000    0.000000    1.000000
+ 
+ 
+  *** Object name:  lens_feed_coor
+  *** Class name :  coor_sys
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  lens_feed_coor
+  *** Class name :  coor_sys
+  *** Message    :  New values in object
+ 
+  Base name : global_coor
+  Z_axis :     0.000000    0.000000    1.000000
+ 
+ 
+  *** Object name:  lens_feed
+  *** Class name :  gaussian_beam_pattern
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  lens_feed
+  *** Class name :  gaussian_beam_pattern
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  lens_feed
+  *** Class name :  gaussian_beam_pattern
+  *** Message    :  New values in object
+ 
+  Frequency : frequency
+  Coor_sys : lens_feed_coor
+ 
+ 
+  *** Object name:  lens_feed
+  *** Class name :  gaussian_beam_pattern
+  *** Message    :  Definition of common feed attributes
+ 
+ 
+ 
+  *** Object name:  lens_feed
+  *** Class name :  gaussian_beam_pattern
+  *** Message    :  Definition of gaussian feed
+ 
+ 
+  Taper angle :   50.0000 degrees
+ 
+  Taper compared to on-axis level :  -12.0000 dB
+ 
+  The imaginary displacement along the negative z-axis
+    is 0.527884 wavelengths
+ 
+  The beam waist radius is 0.409915 wavelengths
+ 
+ 
+  *** Object name:  lens_coor
+  *** Class name :  coor_sys
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  lens_coor
+  *** Class name :  coor_sys
+  *** Message    :  New values in object
+ 
+  Origin :   0.000000E+00 m     0.000000E+00 m     0.100000E+00 m
+  Base name : global_coor
+  Z_axis :     0.000000    0.000000    1.000000
+ 
+ 
+  *** Object name:  r1
+  *** Class name :  real_variable
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  r1
+  *** Class name :  real_variable
+  *** Message    :  New values in object
+ 
+ 
+ 
+  *** Object name:  bs1
+  *** Class name :  real_variable
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  bs1
+  *** Class name :  real_variable
+  *** Message    :  New values in object
+ 
+ 
+ 
+  *** Object name:  lens
+  *** Class name :  simple_lens
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  lens
+  *** Class name :  simple_lens
+  *** Message    :  New values in object
+ 
+  Coordinate system: lens_coor
+  Diameter :   0.200000 m
+  r1, radius of curvature :   0.100000 m
+  r2, radius of curvature :    0.00000 m
+  bs1, conic constant :   -4.00000
+ 
+ 
+  *** Object name:  lens_po
+  *** Class name :  po_lens
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  lens_po
+  *** Class name :  po_lens
+  *** Message    :  New values in object
+ 
+  Frequency : frequency
+  Spill-over : on
+  Lens : lens
+  Get field: lens_in_free_space
+  Analysis method: go_plus_po
+ 
+ 
+  *** Object name:  lens_cut
+  *** Class name :  spherical_cut
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  lens_cut
+  *** Class name :  spherical_cut
+  *** Message    :  New values in object
+ 
+  Frequency : frequency
+  Coor_sys : lens_coor
+  Theta range : start-180.00000    end 180.00000    points   601
+  Phi range : start   0.00000    end  90.00000    points     3
+ 
+ 
+  *** Object name:  n_lens
+  *** Class name :  real_variable
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  n_lens
+  *** Class name :  real_variable
+  *** Message    :  New values in object
+ 
+ 
+ 
+  *** Object name:  lens
+  *** Class name :  simple_lens
+  *** Message    :  New values in object
+ 
+  Refractive index :    2.00000
+  r1, radius of curvature :   0.100000 m
+  bs1, conic constant :   -4.00000
+ 
+  Actual lens thickness :   0.333333E-01 m
+ 
+ 
+  *** Object name:  thickness
+  *** Class name :  real_variable
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  thickness
+  *** Class name :  real_variable
+  *** Message    :  New values in object
+ 
+ 
+ 
+  *** Object name:  lens
+  *** Class name :  simple_lens
+  *** Message    :  New values in object
+ 
+  Refractive index :    2.00000
+  r1, radius of curvature :   0.100000 m
+  bs1, conic constant :   -4.00000
+  Thickness :   0.500000E-01 m
+ 
+  Actual lens thickness :   0.500000E-01 m
+ 
+ 
+  *** Object name:  view_1
+  *** Class name :  view
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  view_1
+  *** Class name :  view
+  *** Message    :  New values in object
+ 
+ 
+  Number of objects :      5
+ 
+  Definition of objects   :
+   No.  Name
+     1  feed_plot_for_view_1
+     2  coor_sys_plot_for_view_1
+     3  output_points_plot_for_view_1
+     4  lens_plot_for_view_1
+     5  rays_from_point_sources
+ 
+ 
+ 
+  *** Object name:  feed_plot_for_view_1
+  *** Class name :  feed_plot
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  feed_plot_for_view_1
+  *** Class name :  feed_plot
+  *** Message    :  Definition of feed_plot
+ 
+ 
+ 
+  *** Object name:  coor_sys_plot_for_view_1
+  *** Class name :  coor_sys_plot
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  coor_sys_plot_for_view_1
+  *** Class name :  coor_sys_plot
+  *** Message    :  Definition of coor_sys_plot
+ 
+ 
+ 
+  *** Object name:  output_points_plot_for_view_1
+  *** Class name :  output_points_plot
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  output_points_plot_for_view_1
+  *** Class name :  output_points_plot
+  *** Message    :  Definition of output_points_plot
+ 
+ 
+ 
+  *** Object name:  lens_plot_for_view_1
+  *** Class name :  lens_plot
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  lens_plot_for_view_1
+  *** Class name :  lens_plot
+  *** Message    :  Definition of lens_plot
+ 
+ 
+ 
+  *** Object name:  rays_from_point_sources
+  *** Class name :  rays_from_point_sources
+  *** Message    :  Object created
+ 
+ 
+ 
+  *** Object name:  rays_from_point_sources
+  *** Class name :  rays_from_point_sources
+  *** Message    :  Definition of ray_plot
+ 
+ 
+  Theta range : start -36.00000    end  36.00000    points    11
+ 
+  Ray path range :
+  Start:    0.00000 cm
+  End  :   0.400000 m
+   and in SI units
+  Start:    0.00000     meter
+  End  :   0.400000     meter
+ 
+  number of objects: 1
+ 
+    No.  Plot objects
+     1   lens_feed
+ 
+ ----- TASK No. 1 -----     Started at 15:06:38 on April 20, 2020
+ lens_po get_currents ( source : sequence(ref(lens_feed)),
+ auto_convergence_of_po : on, convergence_on_output_grid :
+ sequence(ref(lens_cut)))
+ 
+ 
+  *** Object name:  lens_po
+  *** Class name :  po_lens
+  *** Message    :  Get_currents message received
+ 
+  Source : lens_feed
+  PO-auto-convergence selection : on
+  Convergence test on output grid : lens_cut
+ 
+ 
+  *** Object name:  lens_po
+  *** Class name :  po_lens
+  *** Message    :  Initialization
+ 
+ 
+  Auto-convergence with desired accuracy of -80.00 dB.
+ 
+  Face 1:
+  Max. values: po1/po2 = 520/1250
+ 
+ PO convergence
+  Test-grid  Ref-grid       P_max   P_level  Accuracy
+    po1/po2   po1/po2       [dBi]     [dBi]      [dB]
+      20/10     10/10       32.59     32.59    -11.06
+      40/10     20/10       32.58     32.58    -19.14
+      80/10     40/10       32.58     32.58   -126.76  *
+      30/10     80/10       32.58     32.58    -32.74
+      35/10     80/10       32.58     32.58    -72.23
+      38/10     80/10       32.58     32.58   -103.22  *
+      37/10     80/10       32.58     32.58    -92.28  *
+      36/10     80/10       32.58     32.58    -81.94  *
+ 
+ PO convergence
+  Test-grid  Ref-grid       P_max   P_level  Accuracy
+    po1/po2   po1/po2       [dBi]     [dBi]      [dB]
+      10/20     10/10       32.59     32.59     -9.95
+      10/40     10/20       32.59     32.59    -11.20
+      10/80     10/40       32.59     32.59    -23.81
+     10/160     10/80       32.59     32.59   -123.79  *
+      10/60    10/160       32.59     32.59    -36.95
+      10/70    10/160       32.59     32.59    -68.58
+      10/75    10/160       32.59     32.59    -94.14  *
+      10/73    10/160       32.59     32.59    -85.91  *
+      10/72    10/160       32.59     32.59    -77.40
+  PO1 =   36  PO2 =   73  Face =    1, Final PO-values from auto-convergence
+ 
+    Relative power hitting lens face:    0.788167
+  Spill-over:     1.0338 dB
+ 
+ ----- TASK No. 2 -----     Started at 15:06:38 on April 20, 2020
+ lens_cut get_field ( source : sequence(ref(lens_feed), ref(lens_po)))
+ 
+ 
+  *** Object name:  lens_cut
+  *** Class name :  spherical_cut
+  *** Message    :  Get_field message received
+ 
+  Source : lens_feed
+  Source : lens_po
+ 
+  Name of currents file: tmp_0
+ 
+  Control values found in the file:
+    No. of frequencies: 1
+    No. of beams      : 1
+    No. of faces      : 1
+    No. of edges      : 0
+    No. of gaps       : 0
+ 
+  Frequency number  1 :  30.000 GHz
+ 
+    Face No.      PO1       PO2     Partitions
+          1        36        73         1
+ 
+ 
+ 
+  *** Object name:  lens_cut
+  *** Class name :  spherical_cut
+  *** Message    :  Field calculated
+ 
+  Frequency No. :     1
+  Beam No. :     1
+ 
+ ----- END OF TASKS -----     Completed at 15:06:38 on April 20, 2020
+ Total time was 2.83 sec
+ 
+ TICRA-TOOLS SN: 007582
+ Program stopped at 15:06:38 on 20 April 2020
+ 
