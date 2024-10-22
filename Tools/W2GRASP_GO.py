@@ -141,7 +141,7 @@ class coating_surface():
 
 def write_simple_lens(name,coord_sys,diameter,
                       refractive_index, loss_tangent=0,
-                      r1=None, r2=None,
+                      r1=0, r2=0,
                       bs1=0,bs2=0,
                       thickness=0,
                       surf1_file='',surf2_file='',lengthUnit_file='mm',
@@ -152,9 +152,9 @@ def write_simple_lens(name,coord_sys,diameter,
     Str += '  diameter         :' + diameter+',\n'
     Str += '  refractive_index :' + str(refractive_index) +',\n'
     Str += '  loss_tangent     :' + str(loss_tangent) +',\n'
-    if r1 != None:
+    if r1 != 0:
         Str += '     r1           :'+ r1 +',\n'
-    if r2 != None:
+    if r2 != 0:
         Str += '     r2           :'+ r2 +',\n'
     Str += '  bs1              :' + str(bs1) +',\n'
     Str += '  bs2              :' + str(bs2) +',\n'

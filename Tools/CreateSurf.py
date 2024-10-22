@@ -87,7 +87,7 @@ lenses = [lens1_face1,lens1_face2,
           lens2_face1,lens2_face2,
           lens3_face1,lens3_face2]
 # %%
-Np = 101
+Np = 201
 Kspace = 0
 Ktip = 0
 for item in lenses:
