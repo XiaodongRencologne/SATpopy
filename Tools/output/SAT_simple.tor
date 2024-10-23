@@ -93,7 +93,7 @@ coor_cut  coor_sys
 lens1   simple_lens
 (
   coor_sys         :ref(coor_lens1),
-  diameter         :440 mm,
+  diameter         :450 mm,
   refractive_index :3.416,
   loss_tangent     :0,
   r1               :0 cm,
@@ -109,7 +109,7 @@ lens1   simple_lens
 lens2   simple_lens
 (
   coor_sys         :ref(coor_lens2),
-  diameter         :440 mm,
+  diameter         :450 mm,
   refractive_index :3.416,
   loss_tangent     :0,
   r1               :0 cm,
@@ -125,7 +125,7 @@ lens2   simple_lens
 lens3   simple_lens
 (
   coor_sys         :ref(coor_lens3),
-  diameter         :440 mm,
+  diameter         :400 mm,
   refractive_index :3.416,
   loss_tangent     :0,
   r1               :0 cm,
