@@ -38,7 +38,7 @@ def zemax2RSF(Np,Kspace,Ktip,lens_para,outputfolder='',sign = 1):
         z = sign * surf_fuc(rho)
         data = np.append(rho,z).reshape(2,-1).T
         with open(outputfolder+lens_para['name'] + '.rsf','a') as f:
-            f.writelines(str(rho.min())+' '+str(rho.max()) +'\n')
+            #f.writelines(str(rho.min())+' '+str(rho.max()) +'\n')
             np.savetxt(f,data,delimiter=' ',fmt = '%10.9f')
             """
             for n in range(Np):
@@ -48,42 +48,42 @@ def zemax2RSF(Np,Kspace,Ktip,lens_para,outputfolder='',sign = 1):
 
 # %%
 
-lens1_face1 = {'R':7.317849839565703E+001,
-               'K':-1.327029336333904E+001,
+lens1_face1 = {'R':1.035545854703427E+002,
+               'K':-3.000122786911282E+001,
                'type':'EvenAsphere',
-               'co': [-8.194722933835832E-004, 5.647849880421205E-006, -8.282440810597639E-009],
+               'co': [1.450211740738392E-003, 2.848581234586182E-006, -5.021767369327404E-009],
                'r': 22.5,
                'name':'lens1_f1'}
-lens1_face2 = {'R':-5.711387905390255E+002,
-               'K':2.999311416702116E+001,
+lens1_face2 = {'R':-1.672578325120606E+002,
+               'K':2.999835005933332E+001,
                'type':'EvenAsphere',
-               'co': [4.444393059968795E-003, 2.091776374381418E-006, -6.822315879457812E-009],
+               'co': [6.860967807195721E-003, 4.447195339970823E-007, -2.621780005775388E-009],
                'r': 22.5,
                'name':'lens1_f2'}
-lens2_face1 = {'R':3.999936150738854E+001,
-               'K':-7.465458042834327E+000,
+lens2_face1 = {'R':8.189215891762041E+001,
+               'K':-3.000046666787026E+001,
                'type':'EvenAsphere',
-               'co': [-3.324674200128043E-003, 4.339567195952648E-006, -6.609342622830201E-009],
+               'co': [1.564605534523395E-003, 3.063497794251431E-006, -5.002469546126761E-009],
                'r': 22.5,
                'name':'lens2_f1'}
-lens2_face2 = {'R':3.999874410687239E+001,
-               'K':-4.732753703625831E+000,
+lens2_face2 = {'R':4.173343843027721E+001,
+               'K':-1.046030791067757E+000,
                'type':'EvenAsphere',
-               'co': [-7.252526369706933E-003,0,0],
+               'co': [-8.382357913364686E-003,-1.390480360528942E-006,1.846691641792131E-010],
                'r': 22.5,
                'name':'lens2_f2'}
 
-lens3_face1 = {'R':3.999622611956000E+001,
-               'K':1.890831602573785E+000,
+lens3_face1 = {'R':-4.023494153544174E+001,
+               'K':-3.000640715654068E+001,
                'type':'EvenAsphere',
-               'co': [-1.280526111650124E-002, 0, 0],
-               'r': 20,
+               'co': [4.058867092144052E-004, 5.000810092877716E-006, 5.006698115075333E-009],
+               'r': 22.5,
                'name':'lens3_f1'}
-lens3_face2 = {'R':-4.131265169623969E+001,
-               'K':-7.301384185400588E-001,
+lens3_face2 = {'R':-3.997787293605576E+001,
+               'K':-1.818966462620520E+001,
                'type':'EvenAsphere',
-               'co': [1.322423720533787E-002,1.379457394858853E-006,1.829653402510510E-008],
-               'r': 20,
+               'co': [2.290398386941478E-003,5.008243629130054E-006,1.945114042732393E-009],
+               'r': 22.5,
                'name':'lens3_f2'}
 # %%
 lenses = [lens1_face1,lens1_face2,
@@ -105,9 +105,9 @@ for item in lenses:
         plt.plot(x, z+lens_inf[n],'k-')
         plt.plot(-x, z+lens_inf[n],'k-')
     else:
-        x, z = zemax2RSF(Np,Kspace,Ktip,item,outputfolder='output/srf/',sign = 1)
-        plt.plot(x, z+lens_inf[n],'k-')
-        plt.plot(-x, z+lens_inf[n],'k-')
+        x, z = zemax2RSF(Np,Kspace,Ktip,item,outputfolder='output/srf/',sign = -1)
+        plt.plot(x, -z+lens_inf[n],'k-')
+        plt.plot(-x, -z+lens_inf[n],'k-')
     
     n+=1
 plt.axis('equal')

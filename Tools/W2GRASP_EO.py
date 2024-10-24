@@ -53,9 +53,30 @@ def write_Gauss_beam_near(name,freq,
     Str+='  phase_front_radius : '+phase_front_radius+',\n'
     Str+='  polarisation   : '+polarisation+',\n'
     Str+='  factor         :struct(db:'+str(factor[0])+',deg:'+str(factor[1])+'),\n'
-    Str+='  frequency_index_for_plot :'+str(frequency_index_for_plot)+'\n)\n'
+    Str+='  frequency_index_for_plot :'+str(frequency_index_for_plot)+'\n)\n\n'
     return Str
 
+def write_Gauss_Ellip_Beam(name,
+                           freq,
+                           coor_sys,
+                           taper,taper_angle,
+                           polarisation = 'linear',
+                           polarisation_angle = 0,
+                           far_forced = 'off',
+                           factor =[0,0],
+                           frequency_index_plot=1):
+    
+    Str = ''
+    Str += name + '  elliptical_pattern\n(\n'
+    Str+='  frequency      : ref('+freq+'),\n'
+    Str+='  coor_sys       : ref('+coor_sys+'),\n'
+    Str+='  taper          : '+str(taper)+',\n'
+    Str+='  taper_angle    : '+str(taper_angle)+',\n'   
+    Str+='  polarisation   : '+polarisation + ',\n'
+    Str+='  polarisation_angle   :'+ str(polarisation_angle)+ ',\n'
+    Str+='  far_forced     : '+ far_forced + ',\n'
+    Str+='  factor         :struct(db:'+str(factor[0])+',deg:'+str(factor[1])+'),\n'
+    Str+='  frequency_index_for_plot: '+str(frequency_index_plot)+'\n)\n\n'
 ### PO analysis
 '''4. write PO single Face scatterer'''
 def write_single_po(name,freq,
@@ -160,6 +181,7 @@ def write_lens_po(name, freq,
         Str+= 'current_file_face2 :'+current_file_face2+'.po.cur,\n'
 
     Str+=')\n\n'
+    return Str
 
 ''' write Aperture in screen PO'''
 
@@ -170,9 +192,15 @@ def write_MoM(name,):
     pass
 
 '''8. write spherical grid field'''
-def write_spherical_grid(name,coor_sys,u_range,v_range,u0,v0,Nu,Nv,near_far='near',near_dist=100,filename=''):
+def write_spherical_grid(name,
+                         coor_sys,
+                         u_range,v_range,
+                         u0,v0,Nu,Nv,
+                         near_far='near',
+                         near_dist=100,
+                         filename=''):
     Str=''
-    Str+=name+'.grd  spherical_grid\n(\n'
+    Str+=name+'  spherical_grid\n(\n'
     Str+='  coor_sys       : ref('+coor_sys+'),\n'
     Str+='  x_range        : struct(start: '+str(u0-u_range/2)+', end: '+str(u0+u_range/2)+', np: '+str(int(Nu))+'),\n'
     Str+='  y_range        : struct(start: '+str(v0-v_range/2)+', end: '+str(v0+v_range/2)+', np: '+str(int(Nv))+'),\n'
@@ -185,9 +213,14 @@ def write_spherical_grid(name,coor_sys,u_range,v_range,u0,v0,Nu,Nv,near_far='nea
     
     return Str
 
-def write_planar_grid(name,coor_sys,near_dist=0,x_range=[-1,1,11],y_range=[-1,1,11],grid_type='xy',filename=''):
+def write_planar_grid(name,
+                      coor_sys,
+                      near_dist=0,
+                      x_range=[-1,1,11],y_range=[-1,1,11],
+                      grid_type='xy',
+                      filename=''):
     Str=''
-    Str+=name+'.grd  planar_grid\n(\n'
+    Str+=name+'  planar_grid\n(\n'
     Str+='  coor_sys        : ref('+coor_sys+'),\n'
     Str+='  near_dist       : '+str(near_dist)+' m,\n'
     Str+='  grid_type       : '+grid_type+',\n'
@@ -201,3 +234,27 @@ def write_planar_grid(name,coor_sys,near_dist=0,x_range=[-1,1,11],y_range=[-1,1,
     Str+=')\n\n'
     return Str
     
+def write_spherical_cut(name,
+                        coor_sys,
+                        cut_type,
+                        u_range,v_range,
+                        u0,v0,Nu,Nv,
+                        near_far='near',
+                        near_dist=100,
+                        filename=''):
+    Str=''
+    Str+=name+'  spherical_cut\n(\n'
+    Str+='  coor_sys       : ref('+coor_sys+'),\n'
+    Str+='  cut_type       : '++',\n'
+
+
+    Str+='  x_range        : struct(start: '+str(u0-u_range/2)+', end: '+str(u0+u_range/2)+', np: '+str(int(Nu))+'),\n'
+    Str+='  y_range        : struct(start: '+str(v0-v_range/2)+', end: '+str(v0+v_range/2)+', np: '+str(int(Nv))+'),\n'
+    Str+='  near_far       : '+near_far+',\n'
+    Str+='  near_dist      : '+str(near_dist)+' m,\n'
+    if filename=='':
+        Str+='  file_name      : '+name+'.grd\n)\n\n'
+    else:
+        Str+='  file_name      : '+filename+'\n)\n\n'
+    
+    return Str
