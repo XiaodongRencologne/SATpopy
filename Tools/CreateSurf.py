@@ -13,7 +13,7 @@ def EvenAsphere(R,k,coeffi_even):
         z += polyval(rho2,coeff)
         return z
     return surf1
-def zemax2RSF(Np,Kspace,Ktip,lens_para,outputfolder=''):
+def zemax2RSF(Np,Kspace,Ktip,lens_para,outputfolder='',sign = 1):
     '''
     Rotationally symmetric surface.
     It is one-demensional surface which is a function of radial Rho. 
@@ -33,13 +33,13 @@ def zemax2RSF(Np,Kspace,Ktip,lens_para,outputfolder=''):
     if lens_para['type'] == 'EvenAsphere':
         surf_fuc = EvenAsphere(lens_para['R'],lens_para['K'],
                                lens_para['co'])
-    if Kspace == 0:
+    if Kspace == 1:
         rho = np.linspace(0,D/2,Np)
-        z = surf_fuc(rho)
+        z = sign * surf_fuc(rho)
         data = np.append(rho,z).reshape(2,-1).T
         with open(outputfolder+lens_para['name'] + '.rsf','a') as f:
             f.writelines(str(rho.min())+' '+str(rho.max()) +'\n')
-            np.savetxt(f,data,delimiter=' ')
+            np.savetxt(f,data,delimiter=' ',fmt = '%10.9f')
             """
             for n in range(Np):
                 f.writelines(str(rho[n]) + ' ' +str(z[n])+'\n')
@@ -91,8 +91,8 @@ lenses = [lens1_face1,lens1_face2,
           lens3_face1,lens3_face2]
 lens_inf = np.cumsum(np.array([0.0, 3.5,51.524,3.756,10.008,2.009]))
 # %%
-Np = 201
-Kspace = 0
+Np = 5001
+Kspace = 1
 Ktip = 0
 n=0
 fig = plt.figure(figsize=(10,10))
@@ -100,9 +100,15 @@ fig = plt.figure(figsize=(10,10))
 for item in lenses:
     print(n)
     print(item)
-    x, z = zemax2RSF(Np,Kspace,Ktip,item)
-    plt.plot(x, z+lens_inf[n],'k-')
-    plt.plot(-x, z+lens_inf[n],'k-')
+    if n%2 ==0:
+        x, z = zemax2RSF(Np,Kspace,Ktip,item,outputfolder='output/srf/',sign = 1)
+        plt.plot(x, z+lens_inf[n],'k-')
+        plt.plot(-x, z+lens_inf[n],'k-')
+    else:
+        x, z = zemax2RSF(Np,Kspace,Ktip,item,outputfolder='output/srf/',sign = 1)
+        plt.plot(x, z+lens_inf[n],'k-')
+        plt.plot(-x, z+lens_inf[n],'k-')
+    
     n+=1
 plt.axis('equal')
 plt.xlim([-25,25])
