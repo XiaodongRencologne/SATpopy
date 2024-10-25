@@ -71,7 +71,7 @@ def write_Gauss_Ellip_Beam(name,
     Str+='  frequency      : ref('+freq+'),\n'
     Str+='  coor_sys       : ref('+coor_sys+'),\n'
     Str+='  taper          : '+str(taper)+',\n'
-    Str+='  taper_angle    : '+str(taper_angle)+',\n'   
+    Str+='  taper_angle    : struct(zx:'+str(taper_angle[0])+',zy:'+str(taper_angle[1])+'),\n'   
     Str+='  polarisation   : '+polarisation + ',\n'
     Str+='  polarisation_angle   :'+ str(polarisation_angle)+ ',\n'
     Str+='  far_forced     : '+ far_forced + ',\n'

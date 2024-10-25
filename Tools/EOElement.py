@@ -53,8 +53,8 @@ class GaussBeam_Near():
         self.polarisation = polarisation
         self.factor =factor
         self.freq_index =freq_index
-        self.Str = write_Gauss_beam_near(self.name,self.freqList,
-                                         self.coor_sys,
+        self.Str = write_Gauss_beam_near(self.name,self.freqList.name,
+                                         self.coor_sys.name,
                                          self.b_radius, self.phase_radius,
                                          polarisation = self.polarisation,
                                          factor = self.factor,
@@ -65,8 +65,9 @@ class Elliptical_Beam():
                  freqList,
                  coor_sys,
                  Taper, T_angle, 
-                 polarisation, polarisation_angle,
-                 far_forced,
+                 polarisation='linear', 
+                 polarisation_angle=0,
+                 far_forced = 'off',
                  factor = [0,0],
                  frequency_index_for_plot = 1,
                  name = 'Gaussian_Elliptical_Beam'):
@@ -82,8 +83,8 @@ class Elliptical_Beam():
         self.freq_index = frequency_index_for_plot
 
         self.Str = write_Gauss_Ellip_Beam(self.name,
-                                          self.freqList,
-                                          self.coor_sys,
+                                          self.freqList.name,
+                                          self.coor_sys.name,
                                           self.Taper,self.T_angle,
                                           polarisation = self.polarisation,
                                           polarisation_angle = self.polar_angle,
