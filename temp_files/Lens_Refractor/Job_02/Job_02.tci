@@ -1,5 +1,0 @@
-COMMAND OBJECT bor_mom get_currents ( source : sequence(ref(lens_feed)),  &
-auto_convergence_of_po : off) paraboloid_po_cmd 
-COMMAND OBJECT lens_cut get_field ( source : sequence(ref(lens_feed),  &
-ref(bor_mom))) paraboloid_get_field_cmd 
-QUIT 

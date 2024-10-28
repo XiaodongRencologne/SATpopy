@@ -1,8 +1,0 @@
-COMMAND OBJECT optimisation_manager get_optimum () 
-COMMAND OBJECT bor_mom get_currents ( source : sequence(ref(lens_feed))) 
-COMMAND OBJECT lens_cut get_field ( source : sequence(ref(lens_feed),  &
-ref(bor_mom))) 
-FUNCTION Curr_Calc 
-   COMMAND OBJECT bor_mom get_currents ( source : sequence(ref(lens_feed))) 
-END 
-QUIT 
