@@ -1,0 +1,22 @@
+<OutputFiles>
+ <File Object="unknown" SubObject="unknown" Format="Text" Type="tci" Hash="32a84b3b19ef0330ec24cff388d25121" Path="Job_04.tci"/>
+ <File Object="unknown" SubObject="unknown" Format="Text" Type="tor" Hash="7ccd2df1f05402a2f46bd2f8aa6fe90a" Path="Job_04.tor"/>
+ <File Object="unknown" SubObject="unknown" Format="Text" Type="out" Hash="6ef34800edca01a340e2d115b45404d2" Path="Job_04.out"/>
+ <File Object="optimisation_manager" FileOperation="Move" SubObject="unknown" Format="Text" Type="initial_optim" Hash="778e8eac5c6cdc1bf35375579c1be702" Path="optimisation_manager_Job_04_initial_opt_vars.tor"/>
+ <File Object="optimisation_manager" FileOperation="Move" SubObject="unknown" Format="Text" Type="optim_iter_log" Hash="c6934808b96ee6e03ba501f4b80b54fa" Path="optimisation_manager_Job_04_iteration.log"/>
+ <File Object="bor_mom" SubObject="unknown" Format="Bin" Type="3D:CurrentsColourPlot" Hash="308e58f6c99dd40ec82b241dfa29163f" Path="bor_mom.cpf">
+  <Meta Values="bor_mom" Name="CurrentObject"/>
+  <Parameter Values=" 30.0000000000000" Unit="GHz" Name="Frequency"/>
+ </File>
+ <File Object="optimisation_manager" FileOperation="Move" SubObject="unknown" Format="Text" Type="optimisation" Hash="721e0186691b024f97a06f7b72557cef" Path="optimisation_manager_Job_04_output_tor_file.tor"/>
+ <File Object="optimisation_manager" FileOperation="Move" SubObject="unknown" Format="Text" Type="final_optim" Hash="65e415e5b749b7aea777c145d96e3c6e" Path="optimisation_manager_Job_04_final_opt_vars.tor"/>
+ <File Object="optimisation_manager" FileOperation="Move" SubObject="unknown" Format="Text" Type="optim_log" Hash="1dc410e8424ccdaf9506f0c59d0f776b" Path="optimisation_manager_Job_04_optim_summary.osm"/>
+ <File Object="lens_cut" Quantity="E" SubObject="unknown" Format="Ticra" Type="Cut:Spherical" Hash="a0ef6f3e4334bd1f4e0636881c5996aa" Path="lens_cut.cut">
+  <Parameter Values=" 30.0000000000000" Unit="GHz" Name="Frequency"/>
+  <Parameter Values="[0.000000000000000E+000;90.0000000000000;3]" Unit="deg" Name="Phi"/>
+  <Parameter Values="[-180.000000000000;180.000000000000;601]" Unit="deg" Name="Theta"/>
+  <Scan Type="polar"/>
+ </File>
+ <File Format="Text" Type="Comments" Path="comments.txt"/>
+ <File Format="Text" Type="Screen" Path="screenoutput.txt"/>
+</OutputFiles>

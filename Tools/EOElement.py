@@ -2,7 +2,7 @@
 import numpy as np
 import W2GRASP_GO, W2GRASP_EO
 from W2GRASP_EO import write_frequency_list, write_Gauss_beam, write_Gauss_beam_near,write_Gauss_Ellip_Beam
-from W2GRASP_EO import write_lens_po
+from W2GRASP_EO import write_lens_po, write_Aperture_PO
 from W2GRASP_EO import write_spherical_grid
 #%%
 
@@ -125,10 +125,10 @@ class lens_PO():
         self.spill_over = spill_over
         if coor_sys == '':
             self.coor_sys_name = coor_sys
+            self.coor_sys =coor_sys
         else:
             self.coor_sys =coor_sys
             self.coor_sys_name = coor_sys.name
-        self.coor_sys = coor_sys
         if current_file_face1 == '':
             self.curr_file_face1 = self.name+'_face1.cur'
         else:
@@ -150,6 +150,48 @@ class lens_PO():
                                  current_file_face2=self.curr_file_face2,
                                  gbc_file=self.gbc_file)
         
+class aperture_po():
+    def __init__(self,
+                 freq,
+                 aperture,
+                 method='po_plus_ptd',
+                 po_points=[0,0], ptd_points= [[-1,0]],
+                 factor=[0,0],
+                 spill_over='off',
+                 ray_output='none',
+                 coor_sys='', 
+                 file_name='',
+                 name = 'lens_PO'):
+        self.name = name
+        self.freqList = freq
+        self.scatter = aperture
+        self.method = method
+        self.po_points =po_points
+        self.ptd_points = ptd_points
+        self.factor = factor
+        self.spill_over = spill_over
+        self.ray_output = ray_output
+        self.file_name = file_name
+        if coor_sys == '':
+            self.coor_sys_name = coor_sys
+            self.coor_sys =coor_sys
+        else:
+            self.coor_sys =coor_sys
+            self.coor_sys_name = coor_sys.name
+        if file_name == '':
+            self.file_name= self.name+'.cur'
+        else:
+            self.file_name= self.file_name
+        self.Str = write_Aperture_PO(self.name,self.freqList.name, 
+                                 self.scatter.name, 
+                                 method=self.method,
+                                 po_points=self.po_points, 
+                                 ptd_points = self.ptd_points,
+                                 factor=self.factor,
+                                 spill_over=self.spill_over,
+                                 ray_output = self.ray_output,
+                                 coord_sys=self.coor_sys_name,
+                                 current_filename =self.file_name)
 
 class Spherical_grid():
     def __init__(self,
@@ -179,5 +221,31 @@ class Spherical_grid():
                                         near_dist=self.near_dist,
                                         filename=self.outputfile)
 #%%
+class Spherical_cut():
+    def __init__(self,
+                 coor_sys,
+                 u_range,v_range,
+                 u0,v0,Nu,Nv,
+                 near_far='near',
+                 near_dist=100,
+                 filename='',
+                 name='spher_grid'):
+        self.name = name
+        self.coor_sys = coor_sys
+        self.Beam_center = [u0,v0]
+        self.Beam_size =[u_range,v_range]
+        self.Beam_sampleN = [Nu,Nv]
+        self.near_far = near_far
+        self.near_dist = near_dist
+        self.outputfile = filename
 
+
+        self.Str = write_spherical_grid(self.name,
+                                        self.coor_sys.name,
+                                        self.Beam_size[0],self.Beam_size[1],
+                                        self.Beam_center[0],self.Beam_center[1],
+                                        self.Beam_sampleN[0],self.Beam_sampleN[1],
+                                        near_far=self.near_far,
+                                        near_dist=self.near_dist,
+                                        filename=self.outputfile)        
 

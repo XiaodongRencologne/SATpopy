@@ -92,7 +92,7 @@ def write_single_po(name,freq,
             'po',
             'ptd']
     Str=''
-    Str+= name +'.po  '+'   po_single_face_scatterer\n(\n'
+    Str+= name +'  '+'   po_single_face_scatterer\n(\n'
     Str+='  frequency      :ref('+freq+'),\n'
     Str+='  scatterer      :ref('+scatterer+'),\n'
     Str+='  method         :'+Method[method]+',\n'
@@ -121,7 +121,7 @@ def write_multi_po(name,freq,
             'po',
             'ptd']
     Str=''
-    Str+=name+'.po  '+'po_multi_face_scatterer\n(\n'
+    Str+=name+'  '+'po_multi_face_scatterer\n(\n'
     Str+='  frequency      : ref('+freq+'),\n'
     Str+='  scatterer      : ref('+scatterer+'),\n'
     Str+='  method         : '+Method[method]+',\n'
@@ -148,7 +148,7 @@ def write_lens_po(name, freq,
     
     '''
     Str=''
-    Str+= name + '.po  '+ 'po_lens\n(\n'
+    Str+= name + '  '+ 'po_lens\n(\n'
     Str+= '  frequence     :ref('+freq+'),\n'
     Str+= '  lens          :ref('+lens+'),\n'
     Str+= '  get_field     :'+get_field+',\n'
@@ -184,11 +184,52 @@ def write_lens_po(name, freq,
     return Str
 
 ''' write Aperture in screen PO'''
-
+def write_Aperture_PO(name, freq, 
+                  aperture, 
+                  method='po_plus_ptd', 
+                  po_points = [0,0],
+                  ptd_points= [[-1,0]],
+                  factor = [0,0],
+                  spill_over='off', ray_output='none',
+                  coord_sys='', 
+                  current_filename=''):
+    Str=''
+    Str+= name + '  '+ 'po_aperture_in_screen\n(\n'
+    Str+= '  frequence     :ref('+freq+'),\n'
+    Str+= '  scatterer     :ref('+aperture+'),\n'
+    Str+= '  method        :'+method+',\n'
+    Str+='  po_points      :'+'struct(po1:'+str(po_points[0])+', po2:' + str(po_points[1])+'),\n'
+    Str+='  ptd_points     :'+'sequence(\n'
+    for item in ptd_points:
+        Str+='                              struct(edge:'+ str(item[0])+',\n'
+        Str+='                                     ptd:'+ str(item[1])+'),\n'
+    Str+='                              ),\n'
+    Str+='  factor        :struct(db:'+str(factor[0])+',deg:'+str(factor[1])+'),\n'
+    Str+='spill_over      :'+spill_over+',\n'
+    Str+='ray_output      :'+ray_output +',\n'
+    if coord_sys !='':
+        Str+= 'coor_sys        :ref('+coord_sys+'),\n'
+    if current_filename =='':
+        Str+='  file_name  :'+name+'.po.cur\n)\n\n'
+    else:
+        Str+='  file_name      : '+current_filename+'\n)\n\n'
+    return Str
 #MoM
 
 ''' write MoM'''
-def write_MoM(name,):
+def write_BoR_MoM(name,freq,
+                  scatterer,
+                  max_mesh_length, 
+                  expansion_accuracy,
+                  total_power_percentage,
+                  min_power_per_mode,
+                  factor, 
+                  ray_output,
+                  file_name, 
+                  colour_plot_file,
+                  min_m_mode,
+                  max_m_mode):
+
     pass
 
 '''8. write spherical grid field'''

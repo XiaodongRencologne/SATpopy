@@ -1,0 +1,40 @@
+ Tci file: Job_01.tci
+ Out file: Job_01.out
+ Log file: Job_01.log
+ 
+ 
+ TICRA Tools 20.0 (Windows amd64/em64t 64-bit)
+ 
+ 
+ TICRA Tools found  12 CPU threads
+ Enabled products: GRASP
+ 
+ ----- TASK No. 1 -----     Started at 15:06:38 on April 20, 2020
+ 
+ lens_po get_currents ( source : sequence(ref(lens_feed)),
+ auto_convergence_of_po : on, convergence_on_output_grid :
+ sequence(ref(lens_cut)))
+ 
+  PO1 =   36  PO2 =   73  Face =    1, Final PO-values from auto-convergence 
+ 
+  Calculating currents.
+  No. of PO-points (target):               1810                      
+ Estimated task time:  0.18 sec, Estimated remaining time:  0.00 sec  
+ 
+    Relative power hitting lens face:    0.788167
+  Spill-over:     1.0338 dB
+                                                                      
+ Total task time:  0.19 sec
+ 
+ ----- TASK No. 2 -----     Started at 15:06:38 on April 20, 2020
+ 
+ lens_cut get_field ( source : sequence(ref(lens_feed), ref(lens_po)))
+ 
+  No. of field points:                     1803                      
+  No. of PO points (source):               1810                      
+                                                                      
+ Total task time:  0.03 sec
+ 
+ ----- END OF TASKS -----     Completed at 15:06:38 on April 20, 2020
+ 
+ Total time was 2.83 sec

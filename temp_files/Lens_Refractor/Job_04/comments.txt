@@ -1,0 +1,1 @@
+Optimise thickness and r1 of the coated lens to improve peak directivity.

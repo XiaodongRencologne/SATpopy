@@ -1,0 +1,46 @@
+ Tci file: popo.tci
+ Out file: popo.out
+ Log file: popo.log
+ 
+ 
+ TICRA Tools 20.1.2 (Windows amd64/em64t 64-bit)
+ 
+ 
+ TICRA Tools found  72 CPU threads
+ Enabled products: ESTEAM, GRASP, QUPES
+ 
+ ----- TASK No. 1 -----     Started at 10:58:35 on October 17, 2024
+ 
+ bor_mom get_currents ( source : sequence(ref(lens_feed)),
+ auto_convergence_of_po : off)
+ 
+ BOR Meshing results:
+   Patches  Int. nodes  Ext. nodes
+       42          39           0
+ 
+ Frequency  1 of  1
+ Number of unknowns:
+   Total     Edge el.  Patch el.  Edge mag.  Patch mag
+    1442         39        682         39        682
+ 
+ Matrix solution                                                       [ok]  
+ 
+   Azimuthal mode        Power percentage
+               1           100.0000
+                           --------
+   Total (1 mode) :        100.0000
+ 
+ Total task time:  2.58 sec
+ 
+ ----- TASK No. 2 -----     Started at 10:58:37 on October 17, 2024
+ 
+ lens_cut get_field ( source : sequence(ref(lens_feed), ref(bor_mom)))
+ 
+  No. of field points:                     1803                      
+  No. of current points (source):         85688                      
+                                                                      
+ Total task time:  0.18 sec
+ 
+ ----- END OF TASKS -----     Completed at 10:58:37 on October 17, 2024
+ 
+ Total time was 7.58 sec

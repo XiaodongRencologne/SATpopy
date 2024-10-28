@@ -1,0 +1,61 @@
+                      TICRA-Tools Optimisation Summary
+                   **************************************
+ 
+Project data:
+=============
+ 
+Tor file     : Job_04.tor
+Tci file     : Job_04.tci
+Iteration log: optimisation_manager_Job_04_iteration.log
+User name    : StigS
+Date & Time  : 2020-09-28, t: 14:14:45                                                         
+Optimisation method: Minmax
+ 
+ 
+Optimisation settings:
+======================
+Autoscaling = Off
+Accuracy = 1.000E-06
+Maximum Iterations = 200
+Derivative Approximate Delta = 1.000E-04
+ 
+ 
+Optimisation variables summary:
+===============================
+ 
+     Index    Variable name                 Initial value       Optimum value   Active bound
+ --------------------------------------------------------------------------------------------
+         1    r1                             0.100000            0.100899           none
+         2    thickness                      0.500000E-01        0.467618E-01       none
+ 
+ 
+Optimisation summary for goal types
+===================================
+Maximum weighted residual overall and for each goal type:
+ 
+ Goal type                              Initial value       Optimum value   No. critical
+ --------------------------------------------------------------------------------------------
+ All (= objective value)                    1.651               1.279            0
+ Peak Directivity                           1.651               1.279            0
+ 
+ 
+Results ordered by goal type:
+=============================
+ 
+ 
+Goal type:                         Index   Freq.   Beam    Comb.
+Peak Directivity                  in goal  index  index   Weight   Action         Initial       Goal value         Achieved          Residual
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+goal_far_field_peak_directivity      1       1      1      1.000    Max.         33.35 dBi        35.00 dBi        33.72 dBi             1.28
+ 
+ 
+Optimisation summary:
+=====================
+ 
+Number of iterations     :       27
+Number of function evals.:       60
+Initial objective value  :    1.651    
+Final objective value    :    1.279    
+Worst case residual is   :    1.279    
+Mean value of residuals  :    1.279    
+Residuals std.dev.       :    0.000    
