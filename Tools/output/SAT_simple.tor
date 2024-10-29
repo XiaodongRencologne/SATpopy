@@ -131,7 +131,7 @@ rim_Lyot  elliptical_rim
 rim_vw  elliptical_rim
 (
   centre       : struct(x: 0 mm, y: 0 mm),
-  half_axis    : struct(x: 28.76618694117068 mm, y: 28.76618694117068 mm)
+  half_axis    : struct(x: 287.6618694117068 mm, y: 287.6618694117068 mm)
 )
 
 Lyot   aperture_in_screen
@@ -153,7 +153,7 @@ freq_list  frequency
   frequency_list   : sequence(90 GHz,)
 )
 
-Gauss_Near_Feed1  gaussian_beam_pattern
+Gauss_Near_Feed1  gaussian_beam
 (
   frequency      : ref(freq_list),
   coor_sys       : ref(coor_feed0),
@@ -169,7 +169,7 @@ Gaussian_Elliptical_Beam  elliptical_pattern
   frequency      : ref(freq_list),
   coor_sys       : ref(coor_feed0),
   taper          : -2.1714724,
-  taper_angle    : struct(zx:15.4270683,zy:20.2798893),
+  taper_angles    : struct(zx:15.4270683,zy:20.2798893),
   polarisation   : linear,
   polarisation_angle   :0,
   far_forced     : off,
@@ -177,9 +177,9 @@ Gaussian_Elliptical_Beam  elliptical_pattern
   frequency_index_for_plot: 1
 )
 
-lens_PO  po_lens
+lens1_PO  po_lens
 (
-  frequence     :ref(freq_list),
+  frequency     :ref(freq_list),
   lens          :ref(lens1),
   get_field     :lens_in_screen,
   method        :go_plus_po,
@@ -187,13 +187,13 @@ lens_PO  po_lens
                            face2_po1:0, face2_po2:0),
   factor        :struct(db:0,deg:0),
 spill_over      :off,
-current_file_face1 :lens_PO_face1.cur.po.cur,
-current_file_face2 :lens_POface2.po.cur,
+current_file_face1 :lens1_PO_face1.cur.po.cur,
+current_file_face2 :lens1_POface2.po.cur,
 )
 
-lens_PO  po_lens
+lens2_PO  po_lens
 (
-  frequence     :ref(freq_list),
+  frequency     :ref(freq_list),
   lens          :ref(lens2),
   get_field     :lens_in_screen,
   method        :go_plus_po,
@@ -201,13 +201,13 @@ lens_PO  po_lens
                            face2_po1:0, face2_po2:0),
   factor        :struct(db:0,deg:0),
 spill_over      :off,
-current_file_face1 :lens_PO_face1.cur.po.cur,
-current_file_face2 :lens_POface2.po.cur,
+current_file_face1 :lens2_PO_face1.cur.po.cur,
+current_file_face2 :lens2_POface2.po.cur,
 )
 
-lens_PO  po_lens
+lens3_PO  po_lens
 (
-  frequence     :ref(freq_list),
+  frequency     :ref(freq_list),
   lens          :ref(lens3),
   get_field     :lens_in_screen,
   method        :go_plus_po,
@@ -215,13 +215,13 @@ lens_PO  po_lens
                            face2_po1:0, face2_po2:0),
   factor        :struct(db:0,deg:0),
 spill_over      :off,
-current_file_face1 :lens_PO_face1.cur.po.cur,
-current_file_face2 :lens_POface2.po.cur,
+current_file_face1 :lens3_PO_face1.cur.po.cur,
+current_file_face2 :lens3_POface2.po.cur,
 )
 
 POA_Lyot  po_aperture_in_screen
 (
-  frequence     :ref(freq_list),
+  frequency     :ref(freq_list),
   scatterer     :ref(Lyot),
   method        :po_plus_ptd,
   po_points      :struct(po1:0, po2:0),
@@ -235,9 +235,9 @@ ray_output      :none,
   file_name      : POA_Lyot.cur
 )
 
-POA_Lyot  po_aperture_in_screen
+POA_VW  po_aperture_in_screen
 (
-  frequence     :ref(freq_list),
+  frequency     :ref(freq_list),
   scatterer     :ref(vw),
   method        :po_plus_ptd,
   po_points      :struct(po1:0, po2:0),
@@ -248,7 +248,7 @@ POA_Lyot  po_aperture_in_screen
   factor        :struct(db:0,deg:0),
 spill_over      :off,
 ray_output      :none,
-  file_name      : POA_Lyot.cur
+  file_name      : POA_VW.cur
 )
 
 Beam_grid  spherical_grid
@@ -262,7 +262,7 @@ Beam_grid  spherical_grid
   Polarisation   : linear,
   near_far       : far,
   near_dist      : 100 m,
-  file_name      : Beam_grid.grd
+  file_name      : Beam_grid.grd,
   file_format    : TICRA,
 )
 

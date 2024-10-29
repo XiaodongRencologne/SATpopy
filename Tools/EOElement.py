@@ -113,7 +113,7 @@ class lens_PO():
                  current_file_face1='', 
                  current_file_face2='',
                  gbc_file='',
-                 name = 'lens_PO'):
+                 name = 'lens_PO.po'):
         self.name = name
         self.freqList = freq
         self.lens = lens
@@ -161,7 +161,7 @@ class aperture_po():
                  ray_output='none',
                  coor_sys='', 
                  file_name='',
-                 name = 'Aperture_PO'):
+                 name = 'Aperture_PO.po'):
         self.name = name
         self.freqList = freq
         self.scatter = aperture

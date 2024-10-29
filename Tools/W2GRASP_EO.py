@@ -46,7 +46,7 @@ def write_Gauss_beam_near(name,freq,
     factor is a multiplier [Amp(dB),phase(deg)]
     """
     Str=''
-    Str+=name+'  gaussian_beam_pattern\n(\n'
+    Str+=name+'  gaussian_beam\n(\n'
     Str+='  frequency      : ref('+freq+'),\n'
     Str+='  coor_sys       : ref('+coor_sys+'),\n'
     Str+='  beam_radius    : '+ beam_radius+',\n'
@@ -71,7 +71,7 @@ def write_Gauss_Ellip_Beam(name,
     Str+='  frequency      : ref('+freq+'),\n'
     Str+='  coor_sys       : ref('+coor_sys+'),\n'
     Str+='  taper          : '+str(taper)+',\n'
-    Str+='  taper_angle    : struct(zx:'+str(taper_angle[0])+',zy:'+str(taper_angle[1])+'),\n'   
+    Str+='  taper_angles    : struct(zx:'+str(taper_angle[0])+',zy:'+str(taper_angle[1])+'),\n'   
     Str+='  polarisation   : '+polarisation + ',\n'
     Str+='  polarisation_angle   :'+ str(polarisation_angle)+ ',\n'
     Str+='  far_forced     : '+ far_forced + ',\n'
@@ -140,7 +140,7 @@ def write_lens_po(name, freq,
                   get_field='lens_in_screen',
                   method='go_plus_po', waist_radius=0,
                   po_points={'face1':[0,0],'face2': [0,0]}, factor=[0,0],
-                  spill_over='off',coord_sys='', 
+                  spill_over='on',coord_sys='', 
                   current_file_face1='', 
                   current_file_face2='',
                   gbc_file=''):
@@ -150,7 +150,7 @@ def write_lens_po(name, freq,
     '''
     Str=''
     Str+= name + '  '+ 'po_lens\n(\n'
-    Str+= '  frequence     :ref('+freq+'),\n'
+    Str+= '  frequency     :ref('+freq+'),\n'
     Str+= '  lens          :ref('+lens+'),\n'
     Str+= '  get_field     :'+get_field+',\n'
     Str+= '  method        :'+method+',\n'
@@ -191,12 +191,12 @@ def write_Aperture_PO(name, freq,
                   po_points = [0,0],
                   ptd_points= [[-1,0]],
                   factor = [0,0],
-                  spill_over='off', ray_output='none',
+                  spill_over='on', ray_output='none',
                   coord_sys='', 
                   current_filename=''):
     Str=''
     Str+= name + '  '+ 'po_aperture_in_screen\n(\n'
-    Str+= '  frequence     :ref('+freq+'),\n'
+    Str+= '  frequency     :ref('+freq+'),\n'
     Str+= '  scatterer     :ref('+aperture+'),\n'
     Str+= '  method        :'+method+',\n'
     Str+='  po_points      :'+'struct(po1:'+str(po_points[0])+', po2:' + str(po_points[1])+'),\n'
@@ -257,9 +257,9 @@ def write_spherical_grid(name,
     Str+='  near_far       : '+near_far+',\n'
     Str+='  near_dist      : '+str(near_dist)+' m,\n'
     if filename=='':
-        Str+='  file_name      : '+name+'.grd\n'
+        Str+='  file_name      : '+name+'.grd,\n'
     else:
-        Str+='  file_name      : '+filename+'\n'
+        Str+='  file_name      : '+filename+',\n'
     Str+='  file_format    : '+ file_format +',\n'
     return Str +')\n\n'
 
