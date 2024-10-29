@@ -3,7 +3,7 @@ import numpy as np
 import W2GRASP_GO, W2GRASP_EO
 from W2GRASP_EO import write_frequency_list, write_Gauss_beam, write_Gauss_beam_near,write_Gauss_Ellip_Beam
 from W2GRASP_EO import write_lens_po, write_Aperture_PO
-from W2GRASP_EO import write_spherical_grid
+from W2GRASP_EO import write_spherical_grid, write_spherical_cut
 #%%
 
 '''
@@ -161,7 +161,7 @@ class aperture_po():
                  ray_output='none',
                  coor_sys='', 
                  file_name='',
-                 name = 'lens_PO'):
+                 name = 'Aperture_PO'):
         self.name = name
         self.freqList = freq
         self.scatter = aperture
@@ -198,6 +198,10 @@ class Spherical_grid():
                  coor_sys,
                  u_range,v_range,
                  u0,v0,Nu,Nv,
+                 grid_type= 'uv',
+                 Truncation = 'rectangular',
+                 e_h = 'e_field',
+                 polarisation = 'linear',
                  near_far='near',
                  near_dist=100,
                  filename='',
@@ -210,6 +214,10 @@ class Spherical_grid():
         self.near_far = near_far
         self.near_dist = near_dist
         self.outputfile = filename
+        self.grid_type = grid_type
+        self.Truncation =Truncation
+        self.e_h = e_h
+        self.polarisation = polarisation
 
 
         self.Str = write_spherical_grid(self.name,
@@ -217,6 +225,10 @@ class Spherical_grid():
                                         self.Beam_size[0],self.Beam_size[1],
                                         self.Beam_center[0],self.Beam_center[1],
                                         self.Beam_sampleN[0],self.Beam_sampleN[1],
+                                        grid_type = self.grid_type,
+                                        Truncation = self.Truncation,
+                                        e_h = self.e_h,
+                                        polarisation =self.polarisation,
                                         near_far=self.near_far,
                                         near_dist=self.near_dist,
                                         filename=self.outputfile)
@@ -224,28 +236,35 @@ class Spherical_grid():
 class Spherical_cut():
     def __init__(self,
                  coor_sys,
-                 u_range,v_range,
-                 u0,v0,Nu,Nv,
+                 theta_range = [-10,10,501],
+                 phi_range=[0,90,3],
+                 cut_type = 'polar',
+                 e_h = 'e_field',
+                 polarisation = 'linear',
                  near_far='near',
                  near_dist=100,
                  filename='',
-                 name='spher_grid'):
+                 name='spher_cut'):
         self.name = name
         self.coor_sys = coor_sys
-        self.Beam_center = [u0,v0]
-        self.Beam_size =[u_range,v_range]
-        self.Beam_sampleN = [Nu,Nv]
+        self.theta_range = theta_range
+        self.phi_range = phi_range
+        self.cut_type =cut_type
+        self.e_h = e_h
+        self.polarisation = polarisation
         self.near_far = near_far
         self.near_dist = near_dist
         self.outputfile = filename
 
 
-        self.Str = write_spherical_grid(self.name,
-                                        self.coor_sys.name,
-                                        self.Beam_size[0],self.Beam_size[1],
-                                        self.Beam_center[0],self.Beam_center[1],
-                                        self.Beam_sampleN[0],self.Beam_sampleN[1],
-                                        near_far=self.near_far,
-                                        near_dist=self.near_dist,
-                                        filename=self.outputfile)        
+        self.Str = write_spherical_cut(self.name,
+                                       self.coor_sys.name,
+                                       theta_range = self.theta_range,
+                                       phi_range = self.phi_range,
+                                       cut_type =self.cut_type,
+                                       e_h = self.e_h,
+                                       polarisation = self.polarisation,
+                                       near_far=self.near_far,
+                                       near_dist=self.near_dist,
+                                       filename=self.outputfile)        
 

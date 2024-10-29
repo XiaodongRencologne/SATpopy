@@ -28,31 +28,23 @@ coor_feed1  coor_sys
 
 coor_lens1  coor_sys
 (
- origin     : struct(x: 0 mm, y: 0 mm, z: -778.0922710409143 mm),
+ origin     : struct(x: 0 mm, y: 0 mm, z: -576.3280278549364 mm),
  x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
  y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
- base       : ref(coor_feed_ref)
+ base       : ref(coor_lens2)
 )
 
 coor_lens2  coor_sys
 (
- origin     : struct(x: 0 mm, y: 0 mm, z: -197.37622450983713 mm),
+ origin     : struct(x: 0 mm, y: 0 mm, z: -155.8680661622691 mm),
  x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
  y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
- base       : ref(coor_feed_ref)
-)
-
-coor_filter1  coor_sys
-(
- origin     : struct(x: 0 mm, y: 0 mm, z: -712.6202292255853 mm),
- x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
- y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
- base       : ref(coor_feed_ref)
+ base       : ref(coor_lens3)
 )
 
 coor_lens3  coor_sys
 (
- origin     : struct(x: 0 mm, y: 0 mm, z: -59.7333579824145 mm),
+ origin     : struct(x: 0 mm, y: 0 mm, z: -71.77590111674095 mm),
  x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
  y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
  base       : ref(coor_feed_ref)
@@ -60,26 +52,10 @@ coor_lens3  coor_sys
 
 coor_Lyot  coor_sys
 (
- origin     : struct(x: 0 mm, y: 0 mm, z: -789.9559555174151 mm),
+ origin     : struct(x: 0 mm, y: 0 mm, z: -11.620506281444689 mm),
  x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
  y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
- base       : ref(coor_feed_ref)
-)
-
-coor_filter  coor_sys
-(
- origin     : struct(x: 0 mm, y: 0 mm, z: -804.9559555174151 mm),
- x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
- y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
- base       : ref(coor_feed_ref)
-)
-
-coor_IR  coor_sys
-(
- origin     : struct(x: 0 mm, y: 0 mm, z: -816.9559555174151 mm),
- x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
- y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
- base       : ref(coor_feed_ref)
+ base       : ref(coor_lens1)
 )
 
 coor_cut  coor_sys
@@ -88,6 +64,14 @@ coor_cut  coor_sys
  x_axis     : struct(x: 1.0, y: 0.0, z: -0.0),
  y_axis     : struct(x: 0.0, y: -1.0, z: 1.2246467991473532e-16),
  base       : ref(coor_feed_ref)
+)
+
+coor_vw  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: -227.114 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
+ y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
+ base       : ref(coor_Lyot)
 )
 
 lens1   simple_lens
@@ -144,22 +128,10 @@ rim_Lyot  elliptical_rim
   half_axis    : struct(x: 210 mm, y: 210 mm)
 )
 
-rim_filter1  elliptical_rim
+rim_vw  elliptical_rim
 (
   centre       : struct(x: 0 mm, y: 0 mm),
-  half_axis    : struct(x: 221.5879439638061 mm, y: 221.5879439638061 mm)
-)
-
-rim_filter2  elliptical_rim
-(
-  centre       : struct(x: 0 mm, y: 0 mm),
-  half_axis    : struct(x: 213.6294943065297 mm, y: 213.6294943065297 mm)
-)
-
-rim_IR  elliptical_rim
-(
-  centre       : struct(x: 0 mm, y: 0 mm),
-  half_axis    : struct(x: 216.9706978673872 mm, y: 216.9706978673872 mm)
+  half_axis    : struct(x: 28.76618694117068 mm, y: 28.76618694117068 mm)
 )
 
 Lyot   aperture_in_screen
@@ -169,24 +141,141 @@ Lyot   aperture_in_screen
   infinity_shadow: on
 )
 
-Filter2   aperture_in_screen
+vw   aperture_in_screen
 (
-  coor_sys      : ref(coor_filter),
-  rim           : ref(rim_filter2),
+  coor_sys      : ref(coor_vw),
+  rim           : ref(rim_vw),
   infinity_shadow: on
 )
 
-Filter1   aperture_in_screen
+freq_list  frequency
 (
-  coor_sys      : ref(coor_filter1),
-  rim           : ref(rim_filter1),
-  infinity_shadow: on
+  frequency_list   : sequence(90 GHz,)
 )
 
-IR_obsorber   aperture_in_screen
+Gauss_Near_Feed1  gaussian_beam_pattern
 (
-  coor_sys      : ref(coor_IR),
-  rim           : ref(rim_IR),
-  infinity_shadow: on
+  frequency      : ref(freq_list),
+  coor_sys       : ref(coor_feed0),
+  beam_radius    : 1.972 mm,
+  phase_front_radius : 0 mm,
+  polarisation   : linear_x,
+  factor         :struct(db:0,deg:0),
+  frequency_index_for_plot :1
+)
+
+Gaussian_Elliptical_Beam  elliptical_pattern
+(
+  frequency      : ref(freq_list),
+  coor_sys       : ref(coor_feed0),
+  taper          : -2.1714724,
+  taper_angle    : struct(zx:15.4270683,zy:20.2798893),
+  polarisation   : linear,
+  polarisation_angle   :0,
+  far_forced     : off,
+  factor         :struct(db:0,deg:0),
+  frequency_index_for_plot: 1
+)
+
+lens_PO  po_lens
+(
+  frequence     :ref(freq_list),
+  lens          :ref(lens1),
+  get_field     :lens_in_screen,
+  method        :go_plus_po,
+  po_points     :struct(face1_po1:0, face1_po2:0,
+                           face2_po1:0, face2_po2:0),
+  factor        :struct(db:0,deg:0),
+spill_over      :off,
+current_file_face1 :lens_PO_face1.cur.po.cur,
+current_file_face2 :lens_POface2.po.cur,
+)
+
+lens_PO  po_lens
+(
+  frequence     :ref(freq_list),
+  lens          :ref(lens2),
+  get_field     :lens_in_screen,
+  method        :go_plus_po,
+  po_points     :struct(face1_po1:0, face1_po2:0,
+                           face2_po1:0, face2_po2:0),
+  factor        :struct(db:0,deg:0),
+spill_over      :off,
+current_file_face1 :lens_PO_face1.cur.po.cur,
+current_file_face2 :lens_POface2.po.cur,
+)
+
+lens_PO  po_lens
+(
+  frequence     :ref(freq_list),
+  lens          :ref(lens3),
+  get_field     :lens_in_screen,
+  method        :go_plus_po,
+  po_points     :struct(face1_po1:0, face1_po2:0,
+                           face2_po1:0, face2_po2:0),
+  factor        :struct(db:0,deg:0),
+spill_over      :off,
+current_file_face1 :lens_PO_face1.cur.po.cur,
+current_file_face2 :lens_POface2.po.cur,
+)
+
+POA_Lyot  po_aperture_in_screen
+(
+  frequence     :ref(freq_list),
+  scatterer     :ref(Lyot),
+  method        :po_plus_ptd,
+  po_points      :struct(po1:0, po2:0),
+  ptd_points     :sequence(
+                              struct(edge:-1,
+                                     ptd:0),
+                              ),
+  factor        :struct(db:0,deg:0),
+spill_over      :off,
+ray_output      :none,
+  file_name      : POA_Lyot.cur
+)
+
+POA_Lyot  po_aperture_in_screen
+(
+  frequence     :ref(freq_list),
+  scatterer     :ref(vw),
+  method        :po_plus_ptd,
+  po_points      :struct(po1:0, po2:0),
+  ptd_points     :sequence(
+                              struct(edge:-1,
+                                     ptd:0),
+                              ),
+  factor        :struct(db:0,deg:0),
+spill_over      :off,
+ray_output      :none,
+  file_name      : POA_Lyot.cur
+)
+
+Beam_grid  spherical_grid
+(
+  coor_sys       : ref(coor_cut),
+  grid_type      : uv,
+  x_range        : struct(start: -10.0, end: 10.0, np: 501),
+  y_range        : struct(start: -10.0, end: 10.0, np: 501),
+  Truncation     : rectangular,
+  e_h            : e_field,
+  Polarisation   : linear,
+  near_far       : far,
+  near_dist      : 100 m,
+  file_name      : Beam_grid.grd
+  file_format    : TICRA,
+)
+
+Beam_cut  spherical_cut
+(
+  coor_sys       : ref(coor_cut),
+  cut_type       : polar,
+  theta_range    : struct(start: -10, end: 10, np: 1001),
+  phi_range      : struct(start: 0, end: 90, np: 3),
+  e_h            : e_field,
+  polarisation   : linear,
+  near_far       : far,
+  near_dist      : 100 m,
+  file_name      : Beam_cut.cut
 )
 

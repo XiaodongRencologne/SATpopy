@@ -77,6 +77,7 @@ def write_Gauss_Ellip_Beam(name,
     Str+='  far_forced     : '+ far_forced + ',\n'
     Str+='  factor         :struct(db:'+str(factor[0])+',deg:'+str(factor[1])+'),\n'
     Str+='  frequency_index_for_plot: '+str(frequency_index_plot)+'\n)\n\n'
+    return Str
 ### PO analysis
 '''4. write PO single Face scatterer'''
 def write_single_po(name,freq,
@@ -237,22 +238,30 @@ def write_spherical_grid(name,
                          coor_sys,
                          u_range,v_range,
                          u0,v0,Nu,Nv,
-                         near_far='near',
-                         near_dist=100,
-                         filename=''):
+                         grid_type = 'uv',
+                         Truncation = 'rectangular',
+                         e_h  = 'e_field',
+                         polarisation = 'linear',
+                         near_far='far',
+                         near_dist=0,
+                         filename='',file_format = 'TICRA'):
     Str=''
     Str+=name+'  spherical_grid\n(\n'
     Str+='  coor_sys       : ref('+coor_sys+'),\n'
+    Str+='  grid_type      : ' + grid_type + ',\n'
     Str+='  x_range        : struct(start: '+str(u0-u_range/2)+', end: '+str(u0+u_range/2)+', np: '+str(int(Nu))+'),\n'
     Str+='  y_range        : struct(start: '+str(v0-v_range/2)+', end: '+str(v0+v_range/2)+', np: '+str(int(Nv))+'),\n'
+    Str+='  Truncation     : ' + Truncation +',\n'
+    Str+='  e_h            : ' + e_h+',\n'
+    Str+='  Polarisation   : ' +polarisation+',\n'
     Str+='  near_far       : '+near_far+',\n'
     Str+='  near_dist      : '+str(near_dist)+' m,\n'
     if filename=='':
-        Str+='  file_name      : '+name+'.grd\n)\n\n'
+        Str+='  file_name      : '+name+'.grd\n'
     else:
-        Str+='  file_name      : '+filename+'\n)\n\n'
-    
-    return Str
+        Str+='  file_name      : '+filename+'\n'
+    Str+='  file_format    : '+ file_format +',\n'
+    return Str +')\n\n'
 
 def write_planar_grid(name,
                       coor_sys,
@@ -277,24 +286,25 @@ def write_planar_grid(name,
     
 def write_spherical_cut(name,
                         coor_sys,
-                        cut_type,
-                        u_range,v_range,
-                        u0,v0,Nu,Nv,
-                        near_far='near',
+                        theta_range=[-10,10,501], phi_range=[0,90,3],                      
+                        cut_type = 'polar',
+                        e_h = 'e_field',
+                        polarisation = 'linear',
+                        near_far='far',
                         near_dist=100,
                         filename=''):
     Str=''
     Str+=name+'  spherical_cut\n(\n'
     Str+='  coor_sys       : ref('+coor_sys+'),\n'
-    Str+='  cut_type       : '++',\n'
-
-
-    Str+='  x_range        : struct(start: '+str(u0-u_range/2)+', end: '+str(u0+u_range/2)+', np: '+str(int(Nu))+'),\n'
-    Str+='  y_range        : struct(start: '+str(v0-v_range/2)+', end: '+str(v0+v_range/2)+', np: '+str(int(Nv))+'),\n'
+    Str+='  cut_type       : '+cut_type+',\n'
+    Str+='  theta_range    : struct(start: '+str(theta_range[0])+', end: '+str(theta_range[1])+', np: '+str(int(theta_range[2]))+'),\n'
+    Str+='  phi_range      : struct(start: '+str(phi_range[0])+', end: '+str(phi_range[1])+', np: '+str(int(phi_range[2]))+'),\n'
+    Str+='  e_h            : '+e_h +',\n'
+    Str+='  polarisation   : '+polarisation+',\n'
     Str+='  near_far       : '+near_far+',\n'
     Str+='  near_dist      : '+str(near_dist)+' m,\n'
     if filename=='':
-        Str+='  file_name      : '+name+'.grd\n)\n\n'
+        Str+='  file_name      : '+name+'.cut\n)\n\n'
     else:
         Str+='  file_name      : '+filename+'\n)\n\n'
     
