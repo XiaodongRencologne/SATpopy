@@ -30,38 +30,39 @@ class get_current():
 
     def _get_str(self):
         Str = ''
-        Str += 'COMMAND OBJECT ' + self.object.name + ' get_currents\n(\n'
-        Str += '   source                : sequence('
+        Str += 'COMMAND OBJECT ' + self.object.name + ' get_currents &\n'
+        Str += '(   source                : sequence('
         for item in self.source:
             Str += 'ref('+item.name+'),'
-        Str += '),\n'
-        Str += 'field_accuracy           : ' + str(self.accuracy) +',\n'
+        Str += '),&\n'
+        Str += 'field_accuracy           : ' + str(self.accuracy) +',&\n'
         if self.auto_convergence:
-            Str += 'auto_convergence_of_po    : ' + 'on' +',\n'
+            Str += 'auto_convergence_of_po    : ' + 'on' +',&\n'
             if self.convergence_on_scatterer != None:
                 Str += 'convergence_on_scatterer  : ' + 'sequence('
                 for item in self.convergence_on_scatterer:
                     Str += 'ref('+item.name +'),'
-                Str += '),\n'
+                Str += '),&\n'
             if self.convergence_on_output_grid != None:
                 Str += 'convergence_on_output_grid  : ' + 'sequence('
                 for item in self.convergence_on_output_grid:
                     Str += 'ref('+item.name +'),'
-                Str += '),\n'
+                Str += '),&\n'
             if self.convergence_on_expansion_grid != None:
                 Str += 'convergence_on_expansion_grid  : ' + 'sequence('
                 for item in self.convergence_on_expansion_grid:
                     Str += 'ref('+item.name +'),'
-                Str += '),\n'
+                Str += '),&\n'
         else:
-            Str += 'auto_convergence_of_po   : ' + 'off' +',\n'
+            Str += 'auto_convergence_of_po   : ' + 'off' +',&\n'
         
-        Str += 'max_bisections            : ' + str(self.max_bisections) +',\n'
-        Str += 'integration_grid_limit    : ' + self.integration_grid_limit +',\n'
+        Str += 'max_bisections            : ' + str(self.max_bisections) +',&\n'
+        Str += 'integration_grid_limit    : ' + self.integration_grid_limit +',&\n'
         
         if self.obsolete_conv_on_po_grid != None:
             Str += 'obsolete_conv_on_po_grid   : '
-        Str += ')\n\n'
+        Str += ')&\n\n'
+        return Str
 
 # %%
 class get_field():
@@ -76,9 +77,10 @@ class get_field():
 
     def _get_str(self):
         Str = ''
-        Str += 'COMMAND OBJECT ' + self.object.name + ' get_field\n(\n'
-        Str += '   source                : sequence('
+        Str += 'COMMAND OBJECT ' + self.object.name + ' get_field &\n'
+        Str += '(  source                : sequence('
         for item in self.source:
-            Str += 'ref('+item.name+'),'
-        Str += ')\n'
-        Str += ')\n\n'
+            Str += 'ref('+ item.name +'),'
+        Str += ')&\n'
+        Str += ') &\n\n'
+        return Str
