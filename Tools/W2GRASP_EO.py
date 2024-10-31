@@ -175,11 +175,11 @@ def write_lens_po(name, freq,
     if current_file_face1 =='':
         Str+= 'current_file_face1 :'+name+'face1.po.cur,\n'
     else:
-        Str+= 'current_file_face1 :'+current_file_face1+'.po.cur,\n'
+        Str+= 'current_file_face1 :'+current_file_face1+',\n'
     if current_file_face2 =='':
         Str+= 'current_file_face2 :'+name+'face2.po.cur,\n'                        
     else:
-        Str+= 'current_file_face2 :'+current_file_face2+'.po.cur,\n'
+        Str+= 'current_file_face2 :'+current_file_face2+',\n'
 
     Str+=')\n\n'
     return Str

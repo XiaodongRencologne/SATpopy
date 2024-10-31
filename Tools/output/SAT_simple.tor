@@ -186,9 +186,9 @@ lens1_PO  po_lens
   po_points     :struct(face1_po1:0, face1_po2:0,
                            face2_po1:0, face2_po2:0),
   factor        :struct(db:0,deg:0),
-spill_over      :off,
-current_file_face1 :lens1_PO_face1.cur.po.cur,
-current_file_face2 :lens1_POface2.po.cur,
+spill_over      :on,
+current_file_face1 :lens1_PO_face1.cur,
+current_file_face2 :lens1_PO_face2.cur,
 )
 
 lens2_PO  po_lens
@@ -200,9 +200,9 @@ lens2_PO  po_lens
   po_points     :struct(face1_po1:0, face1_po2:0,
                            face2_po1:0, face2_po2:0),
   factor        :struct(db:0,deg:0),
-spill_over      :off,
-current_file_face1 :lens2_PO_face1.cur.po.cur,
-current_file_face2 :lens2_POface2.po.cur,
+spill_over      :on,
+current_file_face1 :lens2_PO_face1.cur,
+current_file_face2 :lens2_PO_face2.cur,
 )
 
 lens3_PO  po_lens
@@ -214,9 +214,9 @@ lens3_PO  po_lens
   po_points     :struct(face1_po1:0, face1_po2:0,
                            face2_po1:0, face2_po2:0),
   factor        :struct(db:0,deg:0),
-spill_over      :off,
-current_file_face1 :lens3_PO_face1.cur.po.cur,
-current_file_face2 :lens3_POface2.po.cur,
+spill_over      :on,
+current_file_face1 :lens3_PO_face1.cur,
+current_file_face2 :lens3_PO_face2.cur,
 )
 
 POA_Lyot  po_aperture_in_screen
@@ -230,9 +230,9 @@ POA_Lyot  po_aperture_in_screen
                                      ptd:0),
                               ),
   factor        :struct(db:0,deg:0),
-spill_over      :off,
+spill_over      :on,
 ray_output      :none,
-  file_name      : POA_Lyot.cur
+  file_name      : POA_Lyot
 )
 
 POA_VW  po_aperture_in_screen
@@ -246,9 +246,9 @@ POA_VW  po_aperture_in_screen
                                      ptd:0),
                               ),
   factor        :struct(db:0,deg:0),
-spill_over      :off,
+spill_over      :on,
 ray_output      :none,
-  file_name      : POA_VW.cur
+  file_name      : POA_VW
 )
 
 Beam_grid  spherical_grid

@@ -137,7 +137,6 @@ class lens_PO():
             self.curr_file_face2 = self.name+'_face2.cur'
         else:
             self.curr_file_face2 =current_file_face2
-        self.curr_file_face2 = current_file_face2
         self.gbc_file = gbc_file
 
         self.Str = write_lens_po(self.name,self.freqList.name, 
@@ -179,7 +178,7 @@ class aperture_po():
             self.coor_sys =coor_sys
             self.coor_sys_name = coor_sys.name
         if file_name == '':
-            self.file_name= self.name+'.cur'
+            self.file_name= self.name
         else:
             self.file_name= self.file_name
         self.Str = write_Aperture_PO(self.name,self.freqList.name, 
@@ -206,6 +205,11 @@ class Spherical_grid():
                  near_dist=100,
                  filename='',
                  name='spher_grid'):
+        Grid_Type = {'uv':'uv',
+                     'El&Az': 'Elevation and Azimuth',
+                     'EloverAz': 'Elevation over Azimuth',
+                     'Az&El': 'Azimuth and Elevation',
+                     'AzoverEl': 'Azimuth over Elevation'}
         self.name = name
         self.coor_sys = coor_sys
         self.Beam_center = [u0,v0]
@@ -214,7 +218,7 @@ class Spherical_grid():
         self.near_far = near_far
         self.near_dist = near_dist
         self.outputfile = filename
-        self.grid_type = grid_type
+        self.grid_type = Grid_Type[grid_type]
         self.Truncation =Truncation
         self.e_h = e_h
         self.polarisation = polarisation
