@@ -66,7 +66,7 @@ class simple_lens():
 
         self.Str = write_simple_lens(self.name,
                                      self.coor_name,
-                                     str(self.diameter),
+                                     str(self.diameter) + ' cm',
                                      self.refractive_index,
                                      self.loss_tangent,
                                      r1 = self.r1, r2 = self.r2, 

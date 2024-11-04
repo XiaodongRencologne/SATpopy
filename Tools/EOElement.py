@@ -206,10 +206,10 @@ class Spherical_grid():
                  filename='',
                  name='spher_grid'):
         Grid_Type = {'uv':'uv',
-                     'El&Az': 'Elevation and Azimuth',
-                     'EloverAz': 'Elevation over Azimuth',
-                     'Az&El': 'Azimuth and Elevation',
-                     'AzoverEl': 'Azimuth over Elevation'}
+                     'El&Az': 'elevation_and_azimuth',
+                     'EloverAz': 'elevation_over_azimuth',
+                     'Az&El': 'azimuth_and_elevation',
+                     'AzoverEl': 'azimuth_over_elevation'}
         self.name = name
         self.coor_sys = coor_sys
         self.Beam_center = [u0,v0]

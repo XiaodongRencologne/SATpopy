@@ -28,18 +28,18 @@ coor_feed1  coor_sys
 
 coor_lens1  coor_sys
 (
- origin     : struct(x: 0 mm, y: 0 mm, z: -576.3280278549364 mm),
+ origin     : struct(x: 0 mm, y: 0 mm, z: -803.9719951339464 mm),
  x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
  y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
- base       : ref(coor_lens2)
+ base       : ref(coor_feed_ref)
 )
 
 coor_lens2  coor_sys
 (
- origin     : struct(x: 0 mm, y: 0 mm, z: -155.8680661622691 mm),
+ origin     : struct(x: 0 mm, y: 0 mm, z: -227.64396727901004 mm),
  x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
  y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
- base       : ref(coor_lens3)
+ base       : ref(coor_feed_ref)
 )
 
 coor_lens3  coor_sys
@@ -52,10 +52,10 @@ coor_lens3  coor_sys
 
 coor_Lyot  coor_sys
 (
- origin     : struct(x: 0 mm, y: 0 mm, z: -11.620506281444689 mm),
+ origin     : struct(x: 0 mm, y: 0 mm, z: -815.5925014153911 mm),
  x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
  y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
- base       : ref(coor_lens1)
+ base       : ref(coor_feed_ref)
 )
 
 coor_cut  coor_sys
@@ -68,23 +68,23 @@ coor_cut  coor_sys
 
 coor_vw  coor_sys
 (
- origin     : struct(x: 0 mm, y: 0 mm, z: -227.114 mm),
+ origin     : struct(x: 0 mm, y: 0 mm, z: -1042.7065014153911 mm),
  x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
  y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
- base       : ref(coor_Lyot)
+ base       : ref(coor_feed_ref)
 )
 
 lens1   simple_lens
 (
   coor_sys         :ref(coor_lens1),
-  diameter         :44.3704085511817 cm,
+  diameter         :44.8 cm,
   refractive_index :3.36,
   loss_tangent     :0,
   r1               :0 cm,
   r2               :0 cm,
   bs1              :0,
   bs2              :0,
-  thickness        :4.349908221542306 cm,
+  thickness        :4.34991 cm,
   surface1_file    :./srf/lens1_f1.rsf,
   surface2_file    :./srf/lens1_f2.rsf,
   length_unit_in_files :cm,
@@ -93,14 +93,14 @@ lens1   simple_lens
 lens2   simple_lens
 (
   coor_sys         :ref(coor_lens2),
-  diameter         :44.45438419903898 cm,
+  diameter         :44.8 cm,
   refractive_index :3.36,
   loss_tangent     :0,
   r1               :0 cm,
   r2               :0 cm,
   bs1              :0,
   bs2              :0,
-  thickness        :4.696706712699847 cm,
+  thickness        :4.69671 cm,
   surface1_file    :./srf/lens2_f1.rsf,
   surface2_file    :./srf/lens2_f2.rsf,
   length_unit_in_files :cm,
@@ -109,14 +109,14 @@ lens2   simple_lens
 lens3   simple_lens
 (
   coor_sys         :ref(coor_lens3),
-  diameter         :40.10854188640662 cm,
+  diameter         :44.8 cm,
   refractive_index :3.36,
   loss_tangent     :0,
   r1               :0 cm,
   r2               :0 cm,
   bs1              :0,
   bs2              :0,
-  thickness        :2.965564711384346 cm,
+  thickness        :2.96556 cm,
   surface1_file    :./srf/lens3_f1.rsf,
   surface2_file    :./srf/lens3_f2.rsf,
   length_unit_in_files :cm,
@@ -182,7 +182,7 @@ lens1_PO  po_lens
   frequency     :ref(freq_list),
   lens          :ref(lens1),
   get_field     :lens_in_screen,
-  method        :po_plus_po,
+  method        :go_plus_po,
   po_points     :struct(face1_po1:0, face1_po2:0,
                            face2_po1:0, face2_po2:0),
   factor        :struct(db:0,deg:0),
@@ -196,7 +196,7 @@ lens2_PO  po_lens
   frequency     :ref(freq_list),
   lens          :ref(lens2),
   get_field     :lens_in_screen,
-  method        :po_plus_po,
+  method        :go_plus_po,
   po_points     :struct(face1_po1:0, face1_po2:0,
                            face2_po1:0, face2_po2:0),
   factor        :struct(db:0,deg:0),
@@ -210,7 +210,7 @@ lens3_PO  po_lens
   frequency     :ref(freq_list),
   lens          :ref(lens3),
   get_field     :lens_in_screen,
-  method        :po_plus_po,
+  method        :go_plus_po,
   po_points     :struct(face1_po1:0, face1_po2:0,
                            face2_po1:0, face2_po2:0),
   factor        :struct(db:0,deg:0),
@@ -254,9 +254,9 @@ ray_output      :none,
 Beam_grid  spherical_grid
 (
   coor_sys       : ref(coor_cut),
-  grid_type      : uv,
-  x_range        : struct(start: -10.0, end: 10.0, np: 501),
-  y_range        : struct(start: -10.0, end: 10.0, np: 501),
+  grid_type      : elevation_and_azimuth,
+  x_range        : struct(start: -4.0, end: 4.0, np: 1001),
+  y_range        : struct(start: -4.0, end: 4.0, np: 1001),
   Truncation     : rectangular,
   e_h            : e_field,
   Polarisation   : linear,
@@ -270,8 +270,8 @@ Beam_cut  spherical_cut
 (
   coor_sys       : ref(coor_cut),
   cut_type       : polar,
-  theta_range    : struct(start: -10, end: 10, np: 1001),
-  phi_range      : struct(start: 0, end: 90, np: 3),
+  theta_range    : struct(start: -90, end: 90, np: 8001),
+  phi_range      : struct(start: 0, end: 180, np: 7),
   e_h            : e_field,
   polarisation   : linear,
   near_far       : far,
