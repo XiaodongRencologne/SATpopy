@@ -54,9 +54,9 @@ class SAT_v1():
     def __init__(self, freq_list, 
                  Feed_list,
                  method = 'po',
-                 
                  outputfolder=''):
         
         self.commit = {'Geometry': 'Only 3 lenses',
                        'Feed': 'elliptical Gaussian Beam, force to far field',
                        }
+        
