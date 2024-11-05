@@ -57,6 +57,6 @@ class SAT_v1():
                  
                  outputfolder=''):
         
-        self.commit = {'Geometry': '',
-                       'Feed': '',
+        self.commit = {'Geometry': 'Only 3 lenses',
+                       'Feed': 'elliptical Gaussian Beam, force to far field',
                        }
