@@ -7,7 +7,7 @@ from EOElement import lens_PO,aperture_po
 from EOElement import Spherical_grid,Spherical_cut
 
 from Command import get_current, get_field
-
+SILICON = 3.36
 L_lensFp_3   = 7.177590111674096
 L_lens3_2    = 15.586806616226909
 L_lens2_1    = 57.632802785493645
@@ -108,14 +108,14 @@ class SAT_v1():
         self.coor_feed_rot = coor_sys([0,0,0],[0,0,0],ref_coor = self.coor_feed_offset,name='coor_feed_rot',)
         self.coor_feed = coor_sys([0,0,0],[0,0,0],ref_coor = self.coor_feed_rot,name='coor_feed',)
 
-        self.coor_lens3 = coor_sys([0,0,-L_lensFp_3*10],[0,0,0],ref_coor = self.coor_ref,name='coor_lens3',)
-        self.coor_lens2 = coor_sys([0,0,-L_lens3_2*10-L_lensFp_3*10],[0,0,0],ref_coor = self.coor_ref,name='coor_lens2',)
+        self.coor_lens3 = coor_sys([0,0,-L_lens3_ref*10],[0,0,0],ref_coor = self.coor_ref,name='coor_lens3',)
+        self.coor_lens2 = coor_sys([0,0,-L_lens2_ref*10],[0,0,0],ref_coor = self.coor_ref,name='coor_lens2',)
         #coor_filter1 = coor_sys([0,0,-],[0,0,0],ref_coor = coor_lens2,name='coor_filter1')
-        self.coor_lens1 = coor_sys([0,0,-L_lens2_1*10-L_lens3_2*10-L_lensFp_3*10],[0,0,0],ref_coor = self.coor_ref,name='coor_lens1',)
-        self.coor_Lyot = coor_sys([0,0,-L_lens1_Lyot*10-L_lens2_1*10-L_lens3_2*10-L_lensFp_3*10],[0,0,0],ref_coor = self.coor_ref,name='coor_Lyot',)
+        self.coor_lens1 = coor_sys([0,0,-L_lens1_ref*10],[0,0,0],ref_coor = self.coor_ref,name='coor_lens1',)
+        self.coor_Lyot = coor_sys([0,0,-L_Ly_ref *10],[0,0,0],ref_coor = self.coor_ref,name='coor_Lyot',)
         #coor_filter2 = coor_sys([0,0,-804.9559555174151],[0,0,0],ref_coor = coor_ref,name='coor_filter',)
         #coor_IR = coor_sys([0,0,-816.9559555174151],[0,0,0],ref_coor = coor_ref,name='coor_IR',)
-        self.coor_vw = coor_sys([0,0,-L_Ly_vw*10-L_lens1_Lyot*10-L_lens2_1*10-L_lens3_2*10-L_lensFp_3*10],[0,0,0],ref_coor = self.coor_ref, name = 'coor_vw')
+        self.coor_vw = coor_sys([0,0,-L_vw_ref*10],[0,0,0],ref_coor = self.coor_ref, name = 'coor_vw')
         self.coor_cut = coor_sys([0,0,0],[np.pi,0,0],ref_coor = self.coor_ref,name='coor_cut',)
         self.coor_list=[global_coord, self.coor_ref, 
                         self.coor_feed_offset, self.coor_feed_rot, self.coor_feed, 
@@ -126,7 +126,35 @@ class SAT_v1():
                         self.coor_cut]
         
     def _create_lens(self):
-        pass
+        ### 2. define lenses
+        lens1 = simple_lens(self.coor_lens1, lens_diameter1, 
+                        SILICON, loss_tangent = 0, 
+                        r1 = '0 cm', r2 = '0 cm', bs1 = 0, bs2 = 0,
+                        thickness = '4.34991 cm',#4.349908221542306 cm',
+                        surf_f1 = './srf/lens1_f1.rsf',
+                        surf_f2 = './srf/lens1_f2.rsf',
+                        lengthUnit = 'cm',
+                        name='lens1')
+
+        lens2 = simple_lens(coor_lens2, lens_diameter2, 
+                        SILICON, loss_tangent = 0, 
+                        r1 = '0 cm', r2 = '0 cm', bs1 = 0, bs2 = 0,
+                        thickness = '4.69671 cm', #'4.696706712699847 cm',
+                        surf_f1 = './srf/lens2_f1.rsf',
+                        surf_f2 = './srf/lens2_f2.rsf',
+                        lengthUnit = 'cm',
+                        name='lens2')
+
+        lens3 = simple_lens(coor_lens3, lens_diameter3, 
+                        SILICON, loss_tangent = 0, 
+                        r1 = '0 cm', r2 = '0 cm', bs1 = 0, bs2 = 0,
+                        thickness = '2.96556 cm' ,#'2.965564711384346 cm',
+                        surf_f1 = './srf/lens3_f1.rsf',
+                        surf_f2 = './srf/lens3_f2.rsf',
+                        lengthUnit = 'cm',
+                        name='lens3')
+
+        self.lens_list = [lens1,lens2,lens3]
         
 # %%
 test = SAT_v1(Freq_list,Feed_list,[0])
