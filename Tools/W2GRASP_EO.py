@@ -220,18 +220,49 @@ def write_Aperture_PO(name, freq,
 ''' write MoM'''
 def write_BoR_MoM(name,freq,
                   scatterer,
-                  max_mesh_length, 
-                  expansion_accuracy,
-                  total_power_percentage,
-                  min_power_per_mode,
-                  factor, 
-                  ray_output,
-                  file_name, 
-                  colour_plot_file,
-                  min_m_mode,
-                  max_m_mode):
+                  max_mesh_length=2, 
+                  expansion_accuracy = 'Extreme',
+                  ray_output = 'none',
+                  file_name ='', 
+                  file_name_cp=''):
+    Str=''
+    Str+=name+'  bor_mom\n(\n'
+    Str+='  frequency       : ref('+freq+'),\n'
+    Str+='  scatterer       : ref('+scatterer +'),\n'
+    Str+='  max_mesh_length : '+str(max_mesh_length) +',\n'
+    Str+='  expansion_accuracy : '+expansion_accuracy +',\n'
+    Str+='  ray_output      : '+ ray_output +',\n'
+    if file_name =='':
+        Str+='  file_name       : '+ name +'.cur,\n'
+    else:
+        Str+='  file_name       : '+ file_name +',\n'
+    if file_name_cp =='':
+        Str+=' colour_plot_file : '+ name +'.cpf,\n'
+    else:
+        Str+=' colour_plot_file : '+ file_name_cp +',\n'
+    Str+=')\n\n'
+    return Str
 
-    pass
+def write_MoM(name,freq,
+              scatterer,
+              max_mesh_length=1.5, 
+              expansion_accuracy = 'Extreme',
+              relative_geo_tolerance = 0.001,
+              ray_output = 'none',
+              file_name ='', 
+              file_name_cp=''):
+    Str=''
+    Str+=name+'  mom\n(\n'
+    Str+='  frequency       : ref('+freq+'),\n'
+    Str+='  scatterer       : ref('+scatterer +'),\n'   
+    Str+='  expansion_accuracy : '+expansion_accuracy +',\n'
+    Str+='  max_mesh_length : '+str(max_mesh_length) +',\n'
+    Str+=' relative_geom_tolerance : '+str(relative_geo_tolerance) +',\n'
+    #Str+='  ray_output      : '+ ray_output +',\n'
+    #Str+='  file_name       : '+ file_name +',\n'
+    #Str+=' colour_plot_file : '+ file_name_cp +',\n'
+    Str+=')\n\n'
+    return Str
 
 '''8. write spherical grid field'''
 def write_spherical_grid(name,

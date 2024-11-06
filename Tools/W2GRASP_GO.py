@@ -175,7 +175,7 @@ def write_simple_lens(name,coord_sys,diameter,
 
 '''6.  write aperture in screen'''
 
-def write_aperture_scan(name,coord_sys,rim,infinity_shadow='on'):
+def write_aperture(name,coord_sys,rim,infinity_shadow='on'):
     Str = ''
     Str += name + '   aperture_in_screen\n(\n'
     Str += '  coor_sys      : ref(' + coord_sys+'),\n'
@@ -183,3 +183,13 @@ def write_aperture_scan(name,coord_sys,rim,infinity_shadow='on'):
     Str += '  infinity_shadow: '+infinity_shadow +'\n'
     Str += ')\n\n'
     return Str
+
+
+'''7. defin scatter cluster'''
+def write_scatter_cluster(name,scatter_list):
+    Str = ''
+    Str += name + '   scatterer_cluster\n(\n'
+    Str += '  scatterers    : squence('
+    for item in scatter_list:
+        Str += 'ref('+ item.name + '),'
+    Str += ')\n)\n\n'

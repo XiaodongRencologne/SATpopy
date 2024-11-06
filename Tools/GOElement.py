@@ -1,6 +1,6 @@
 import numpy as np
 import W2GRASP_GO, W2GRASP_EO
-from W2GRASP_GO import write_coord,write_simple_lens,write_aperture_scan
+from W2GRASP_GO import write_coord,write_simple_lens,write_aperture,write_scatter_cluster
 from W2GRASP_GO import write_rim
 
 
@@ -86,7 +86,7 @@ class Aperture_screen():
         self.coor_name = coor_sys.name
         self.rim = rim.name
         self.infinity_shadow = infinity_shadow
-        self.Str = write_aperture_scan(self.name,self.coor_name,self.rim, self.infinity_shadow)
+        self.Str = write_aperture(self.name,self.coor_name,self.rim, self.infinity_shadow)
 
 class rim():
     def __init__(self, center, 
@@ -98,3 +98,11 @@ class rim():
         self.Type = Type
         self.name = name
         self.Str = write_rim(self.name,self.center,self.side_lengths, Type = self.Type)
+
+
+class scatterer_cluster():
+    def __init__(self,scatter_list,name = 'cluster'):
+        self.name = name
+        self.scatters = scatter_list
+        self.Str = write_scatter_cluster(self.scatters)
+        pass
