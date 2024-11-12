@@ -46,6 +46,44 @@ def R_surf(surf_file):
 
     return x0, x1, Nx, y0, y1, Ny, z
 
+### write zemax symmetrical lens surface
+def zemax2RSF(Np,Kspace,Ktip,lens_para,outputfolder='',sign = 1):
+    '''
+    Rotationally symmetric surface.
+    It is one-demensional surface which is a function of radial Rho. 
+    rho =sqrt(x^2+y^2)
+
+    Lens_para = {'R': 500,
+                 'K': -2.1,
+                 'type': 'EvenAsphere',
+                 'co': [1,2,3],
+                 'D' : 200,
+                 'name':'lens_face1'}
+    '''
+    with open(outputfolder+lens_para['name']+'.rsf','w') as f:
+        f.writelines(lens_para['name']+'\n')
+        f.writelines(str(Np)+' '+str(Kspace)+' '+str(Ktip)+'\n')
+    D = lens_para['r']*2
+    if lens_para['type'] == 'EvenAsphere':
+        surf_fuc = EvenAsphere(lens_para['R'],lens_para['K'],
+                               lens_para['co'])
+    if Kspace == 1:
+        rho = np.linspace(0,D/2,Np)
+        z = sign * surf_fuc(rho)
+        data = np.append(rho,z).reshape(2,-1).T
+        with open(outputfolder+lens_para['name'] + '.rsf','a') as f:
+            #f.writelines(str(rho.min())+' '+str(rho.max()) +'\n')
+            np.savetxt(f,data,delimiter=' ',fmt = '%10.8f')
+            """
+            for n in range(Np):
+                f.writelines(str(rho[n]) + ' ' +str(z[n])+'\n')
+            """
+    return rho, z
+def R_lens_surf(surf_file):
+    data = np.genfromtxt(surf_file, delimiter=' ', skip_header =2)
+    rho = data[:,0]
+    z = data[:,1]
+    return rho, z
 # %%
 class PolySurf():
     '''
@@ -111,6 +149,31 @@ class Splines_Surf():
         return z
     
     def normal_vector(self,x,y):
+        nz = -np.ones(x.shape)
         pass
 
 
+class Symetrical_surf():
+    '''
+    Define a rotaional symmetrical surfaces
+    '''
+    def __init__(self,surf_file):
+        rho, z = R_lens_surf(surf_file)
+        #self._func1d = interpolate.interp1d(rho, z,kind='cubic')
+        self._func1d =interpolate.CubicSpline(rho, z)
+    
+    def surface(self,x,y):
+        return self._func1d(np.sqrt(x**2+y**2))
+    
+    def normal_vector(self,x,y):
+        rho = np.sqrt(x**2+y**2)
+        nz = -np.ones(x.shape)
+        nx = self._func1d.derivative(1)(rho)* x/rho
+        ny = self._func1d.derivative(1)(rho)* y/rho
+        N=np.sqrt(nx**2+ny**2+nz**2)
+
+        nx = nx/N
+        ny = ny/N
+        nz = nz/N
+
+        return nx,ny,nz, N

@@ -86,3 +86,17 @@ class Reflector(Geo):
     '''
     def __init__(self,surf,rim,coord_sys=global_coord,loss=None):
         Geo.__init__(self,surf,rim,coord_sys)
+
+# %%
+class simpleLens(Geo):
+    def __init__(self,diameter,
+                 dielectric,
+                 thickness,
+                 surf1, surf2,
+                 coord_sys=global_coord):
+        self.face1 = vector()
+        self.face2 = vector()
+        self.dielectric = dielectric
+        self.diameter = diameter
+        
+# %%
