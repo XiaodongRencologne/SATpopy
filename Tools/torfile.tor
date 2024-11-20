@@ -1,0 +1,876 @@
+M1_P1  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_01.rim)
+)
+M1_P2  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_02.rim)
+)
+M1_P3  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_03.rim)
+)
+M1_P4  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_04.rim)
+)
+M1_P5  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_05.rim)
+)
+M1_P6  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_06.rim)
+)
+M1_P7  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_07.rim)
+)
+M1_P8  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_08.rim)
+)
+M1_P9  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_09.rim)
+)
+M1_P10  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_10.rim)
+)
+M1_P11  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_11.rim)
+)
+M1_P12  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_12.rim)
+)
+M1_P13  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_13.rim)
+)
+M1_P14  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_14.rim)
+)
+M1_P15  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_15.rim)
+)
+M1_P16  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_16.rim)
+)
+M1_P17  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_17.rim)
+)
+M1_P18  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_18.rim)
+)
+M1_P19  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_19.rim)
+)
+M1_P20  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_20.rim)
+)
+M1_P21  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_21.rim)
+)
+M1_P22  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_22.rim)
+)
+M1_P23  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_23.rim)
+)
+M1_P24  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_24.rim)
+)
+M1_P25  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_25.rim)
+)
+M1_P26  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_26.rim)
+)
+M1_P27  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_27.rim)
+)
+M1_P28  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_28.rim)
+)
+M1_P29  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_29.rim)
+)
+M1_P30  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_30.rim)
+)
+M1_P31  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_31.rim)
+)
+M1_P32  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_32.rim)
+)
+M1_P33  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_33.rim)
+)
+M1_P34  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_34.rim)
+)
+M1_P35  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_35.rim)
+)
+M1_P36  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_36.rim)
+)
+M1_P37  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_37.rim)
+)
+M1_P38  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_38.rim)
+)
+M1_P39  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_39.rim)
+)
+M1_P40  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_40.rim)
+)
+M1_P41  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_41.rim)
+)
+M1_P42  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_42.rim)
+)
+M1_P43  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_43.rim)
+)
+M1_P44  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_44.rim)
+)
+M1_P45  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_45.rim)
+)
+M1_P46  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_46.rim)
+)
+M1_P47  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_47.rim)
+)
+M1_P48  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_48.rim)
+)
+M1_P49  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_49.rim)
+)
+M1_P50  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_50.rim)
+)
+M1_P51  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_51.rim)
+)
+M1_P52  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_52.rim)
+)
+M1_P53  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_53.rim)
+)
+M1_P54  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_54.rim)
+)
+M1_P55  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_55.rim)
+)
+M1_P56  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_56.rim)
+)
+M1_P57  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_57.rim)
+)
+M1_P58  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_58.rim)
+)
+M1_P59  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_59.rim)
+)
+M1_P60  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_60.rim)
+)
+M1_P61  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_61.rim)
+)
+M1_P62  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_62.rim)
+)
+M1_P63  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_63.rim)
+)
+M1_P64  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_64.rim)
+)
+M1_P65  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_65.rim)
+)
+M1_P66  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_66.rim)
+)
+M1_P67  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_67.rim)
+)
+M1_P68  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_68.rim)
+)
+M1_P69  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_69.rim)
+)
+M1_P70  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_70.rim)
+)
+M1_P71  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_71.rim)
+)
+M1_P72  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_72.rim)
+)
+M1_P73  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_73.rim)
+)
+M1_P74  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_74.rim)
+)
+M1_P75  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_75.rim)
+)
+M1_P76  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_76.rim)
+)
+M1_P77  reflector
+(
+  coor_sys         : ref(primary_mirror.cs),
+  surfaces         : sequence(ref(primary_mirror.surf)),
+  rim              : ref(primary_77.rim)
+)
+M2_P1  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_01.rim)
+)
+M2_P2  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_02.rim)
+)
+M2_P3  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_03.rim)
+)
+M2_P4  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_04.rim)
+)
+M2_P5  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_05.rim)
+)
+M2_P6  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_06.rim)
+)
+M2_P7  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_07.rim)
+)
+M2_P8  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_08.rim)
+)
+M2_P9  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_09.rim)
+)
+M2_P10  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_10.rim)
+)
+M2_P11  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_11.rim)
+)
+M2_P12  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_12.rim)
+)
+M2_P13  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_13.rim)
+)
+M2_P14  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_14.rim)
+)
+M2_P15  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_15.rim)
+)
+M2_P16  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_16.rim)
+)
+M2_P17  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_17.rim)
+)
+M2_P18  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_18.rim)
+)
+M2_P19  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_19.rim)
+)
+M2_P20  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_20.rim)
+)
+M2_P21  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_21.rim)
+)
+M2_P22  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_22.rim)
+)
+M2_P23  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_23.rim)
+)
+M2_P24  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_24.rim)
+)
+M2_P25  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_25.rim)
+)
+M2_P26  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_26.rim)
+)
+M2_P27  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_27.rim)
+)
+M2_P28  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_28.rim)
+)
+M2_P29  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_29.rim)
+)
+M2_P30  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_30.rim)
+)
+M2_P31  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_31.rim)
+)
+M2_P32  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_32.rim)
+)
+M2_P33  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_33.rim)
+)
+M2_P34  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_34.rim)
+)
+M2_P35  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_35.rim)
+)
+M2_P36  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_36.rim)
+)
+M2_P37  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_37.rim)
+)
+M2_P38  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_38.rim)
+)
+M2_P39  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_39.rim)
+)
+M2_P40  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_40.rim)
+)
+M2_P41  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_41.rim)
+)
+M2_P42  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_42.rim)
+)
+M2_P43  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_43.rim)
+)
+M2_P44  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_44.rim)
+)
+M2_P45  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_45.rim)
+)
+M2_P46  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_46.rim)
+)
+M2_P47  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_47.rim)
+)
+M2_P48  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_48.rim)
+)
+M2_P49  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_49.rim)
+)
+M2_P50  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_50.rim)
+)
+M2_P51  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_51.rim)
+)
+M2_P52  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_52.rim)
+)
+M2_P53  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_53.rim)
+)
+M2_P54  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_54.rim)
+)
+M2_P55  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_55.rim)
+)
+M2_P56  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_56.rim)
+)
+M2_P57  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_57.rim)
+)
+M2_P58  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_58.rim)
+)
+M2_P59  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_59.rim)
+)
+M2_P60  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_60.rim)
+)
+M2_P61  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_61.rim)
+)
+M2_P62  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_62.rim)
+)
+M2_P63  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_63.rim)
+)
+M2_P64  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_64.rim)
+)
+M2_P65  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_65.rim)
+)
+M2_P66  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_66.rim)
+)
+M2_P67  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_67.rim)
+)
+M2_P68  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_68.rim)
+)
+M2_P69  reflector
+(
+  coor_sys         : ref(secondary_mirror.cs),
+  surfaces         : sequence(ref(secondary_mirror.surf)),
+  rim              : ref(secondary_69.rim)
+)
