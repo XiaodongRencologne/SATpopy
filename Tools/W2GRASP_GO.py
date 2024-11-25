@@ -193,3 +193,45 @@ def write_scatter_cluster(name,scatter_list):
     for item in scatter_list:
         Str += 'ref('+ item.name + '),'
     Str += ')\n)\n\n'
+
+'''8. BoR Mesh'''
+
+def write_BoR_Mesh(name,
+                   coord_sys,
+                   region,
+                   nodes,
+                   linear_segments,
+                   #cubic_segments,
+                   length_unit,
+                   advanced_regions=''):
+    Str = ''
+    Str += name + '   bor_mesh\n(\n'
+    Str +='   coor_sys      :ref('+coord_sys+'),\n'
+    Str +='   regions       :table(\n'
+    for i in range(len(region)):
+        data = str(int(region[i][0])) + '  ' + str(region[i][1]) + '  ' + str(region[i][2]) + \
+            '  '+str(region[i][3])
+        Str +='          '+data +'\n'
+    Str +='   ),\n'
+
+    Str +='   nodes       :table(\n'
+    for i in range(len(nodes)):
+        data = str(int(nodes[i][0])) + '  ' + str(nodes[i][1]) + '  ' + str(nodes[i][2])
+        Str += '     '+data +'\n'
+    Str +='   ),\n'
+
+    Str +='    linear_segments       :table(\n'
+    for i in range(len(linear_segments)):
+        data = str(int(linear_segments[i][0])) + '  ' +\
+              str(int(linear_segments[i][1])) + '  ' + str(int(linear_segments[i][2]))+'  '+\
+              str(int(linear_segments[i][3])) + '  ' + str(int(linear_segments[i][4]))+'  '+\
+              str(int(linear_segments[i][5])) + '  ' + str(int(linear_segments[i][6]))
+        Str +='     ' + data +'\n'
+    Str +='   ),\n'
+
+    Str +='   length_unit  :'+ length_unit+',\n'
+    Str +='   coor_order   :'+'rho_z,\n'
+    Str +='   advanced_regions : table\n'
+    Str +='   (\n   )\n'
+    Str +=')\n\n'
+    return Str

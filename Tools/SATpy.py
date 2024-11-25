@@ -73,10 +73,10 @@ lens_diameter2 = 44.8 # cm
 lens_diameter3 = 44.8 # cm
 
 class SAT_v1():
-    def __init__(self,
-                 freq_list, 
+    def __init__(self, 
                  feed_list,
                  Rx_position_list,
+                 lens_list = [],
                  method = {'lens':'go_plus_po',
                            'screen': 'po_plus_ptd'},
                  grids = {'type': 'El&Az',

@@ -97,7 +97,7 @@ Ktip = 0
 n=0
 fig = plt.figure(figsize=(10,10))
 
-outputfolder = 'output/srf2/'
+outputfolder = 'output/srf_MoM/'
 
 for item in lenses:
     print(n)
@@ -113,7 +113,7 @@ for item in lenses:
     
     n+=1
 plt.axis('equal')
-plt.xlim([-25,25])
+plt.xlim([-22.4,22.4])
 plt.show()
 
 # %%

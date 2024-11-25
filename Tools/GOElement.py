@@ -1,7 +1,7 @@
 import numpy as np
 import W2GRASP_GO, W2GRASP_EO
 from W2GRASP_GO import write_coord,write_simple_lens,write_aperture,write_scatter_cluster
-from W2GRASP_GO import write_rim
+from W2GRASP_GO import write_rim,write_BoR_Mesh
 
 
 '''
@@ -105,4 +105,136 @@ class scatterer_cluster():
         self.name = name
         self.scatters = scatter_list
         self.Str = write_scatter_cluster(self.scatters)
-        pass
+
+class BoR_MoM():
+    def __init__(self,
+                 coor_sys,
+                 region,
+                 nodes,
+                 linear_segments,
+                 #cubic_segments,
+                 length_unit = 'mm',
+                 advanced_regions='',
+                 name='BoR_Mesh'):
+        self.name =name
+        self.coor_name = coor_sys.name
+        self.region = region
+        self.nodes = nodes
+        self.linear_segments = linear_segments
+        self.length_unit = length_unit
+        self.Str = write_BoR_Mesh(name,
+                                  self.coor_name,
+                                  self.region,
+                                  self.nodes,
+                                  self.linear_segments,
+                                  #cubic_segments,
+                                  self.length_unit,
+                                  advanced_regions=advanced_regions)
+        
+
+class BoR_MoM_lens():
+    def __init__(self,
+                 coor_sys,
+                 lens_index,
+                 lens_t,
+                 layer_index,
+                 AR_t,
+                 surface1,
+                 surface2,
+                 length_unit = 'mm',
+                 advanced_regions='',
+                 name='BoR_Mesh'):
+        self.name =name
+        self.coor_name = coor_sys.name
+        self.lens_index= lens_index
+        self.layer_index = layer_index
+        region = [[1,lens_index**2,1,0]]
+        n =2
+        for item in layer_index:
+            region.append([n, item**2 ,1,0])
+            n+=1
+        self.region = region
+
+        # define nodes
+        N_surface = len(layer_index) +2
+        rho = np.repeat(surface1[:,0],N_surface).reshape(-1,N_surface).T.ravel()
+        #print(rho,rho.size)
+        surf = np.concatenate((surface1[:,1],-surface2[:,1]+lens_t))
+
+        L_t1 = 0
+        L_t2 = lens_t+0
+        for n in range(len(AR_t)):
+            if n%2 ==0:
+                L_t1 += AR_t[n]
+                surf = np.concatenate((surf,surface1[:,1]-L_t1))
+            else:
+                L_t2 += AR_t[n]
+                surf = np.concatenate((surf,-surface2[:,1]+L_t2))
+        N_nodes = np.array(list(range(1,rho.size+1)))
+        #print(N_nodes.size,rho.size,surf.size)
+        self.nodes = np.concatenate((N_nodes,rho, surf)).reshape(3,-1).T
+
+        # define order of nodes
+        node_A = np.array([])
+        node_B = np.array([])
+        region1 = np.array([])
+        region2 = np.array([])
+        N_nodes_list = []
+        for n in range(2*len(layer_index)+2):
+            if n%2 ==0:
+                N_nodes_list.append(int(surface1.size/2))
+            else:
+                N_nodes_list.append(int(surface2.size/2))
+        n_start = 0
+        End = []
+        for n in range(N_surface):
+            if n%2 ==0:
+                node_A = np.append(node_A, N_nodes[n_start:n_start+N_nodes_list[n]-1])
+                node_B = np.append(node_B, N_nodes[n_start+1:n_start+N_nodes_list[n]])
+                if n == 0:
+                    region1 = np.append(region1,np.zeros(N_nodes_list[n]-1)+(n+1))
+                    region2 = np.append(region2,np.zeros(N_nodes_list[n]-1)+(n+2))
+                elif n == N_surface-2:
+                    region1 = np.append(region1,np.zeros(N_nodes_list[n]-1)+(n))
+                    region2 = np.append(region2,np.zeros(N_nodes_list[n]-1))
+                else:
+                    region1 = np.append(region1,np.zeros(N_nodes_list[n]-1)+(n))
+                    region2 = np.append(region2,np.zeros(N_nodes_list[n]-1)+(n+2))
+                n_start +=N_nodes_list[n]
+            else:
+                node_A = np.append(node_A, N_nodes[n_start:n_start+N_nodes_list[n]-1])
+                node_B = np.append(node_B, N_nodes[n_start+1:n_start+N_nodes_list[n]])
+                if n == N_surface-1:
+                    region1 = np.append(region1,np.zeros(N_nodes_list[n]-1))
+                else:
+                    region1 = np.append(region1,np.zeros(N_nodes_list[n]-1)+(n+2))
+                region2 = np.append(region2,np.zeros(N_nodes_list[n]-1)+(n))
+                n_start +=N_nodes_list[n]
+            End.append(node_B[-1])
+        # lens
+        node_A = np.append(node_A, End[0])
+        node_B = np.append(node_B, End[1])   
+        region1 = np.append(region1,1)
+        region2 = np.append(region2,0) 
+        for n in range(len(layer_index)):
+            if n%2 == 0:
+                node_A = np.append(node_A, End[n+2])
+                node_B = np.append(node_B, End[n])
+                region1 = np.append(region1,n+2)
+            else:
+                node_A = np.append(node_A, End[n])
+                node_B = np.append(node_B, End[n+2])
+                region1 = np.append(region1,n+2)
+            region2 = np.append(region2, 0)
+        self.linear_segments = np.concatenate((np.array(list(range(1,node_A.size+1))),
+                                               node_A,node_B,region1, region2,-np.ones(node_A.size),np.zeros(node_A.size))).reshape(7,-1).T
+        self.length_unit = length_unit
+        self.Str = write_BoR_Mesh(name,
+                                  self.coor_name,
+                                  self.region,
+                                  self.nodes.tolist(),
+                                  self.linear_segments.tolist(),
+                                  #cubic_segments,
+                                  self.length_unit,
+                                  advanced_regions=advanced_regions)
+
