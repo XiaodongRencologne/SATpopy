@@ -2,6 +2,7 @@ import numpy as np
 import W2GRASP_GO, W2GRASP_EO
 from W2GRASP_GO import write_coord,write_simple_lens,write_aperture,write_scatter_cluster
 from W2GRASP_GO import write_rim,write_BoR_Mesh
+from GaussianOptics import ThinLens
 
 
 '''
@@ -20,7 +21,7 @@ class coor_sys():
     def __init__(self,origin, angle, ref_coor = global_coord, name='coor_sys'):
         self.name = name
         self.ref_coor = ref_coor
-        self.ref_coor = ref_coor
+        #self.ref_coor = ref_coor
         self.origin = origin
         self.angle = angle
 
@@ -238,3 +239,21 @@ class BoR_MoM_lens():
                                   self.length_unit,
                                   advanced_regions=advanced_regions)
 
+
+
+# Quasi-optics reflector, off-axis, conic mirror or polynomial mirror. 
+
+class Quasi_optics_reflector():
+    def __init__(self,
+                 win,din,f,Angle,Lambda,
+                 align_type='BW',
+                 align_coord='',
+                 name='off_axis_reflector'):
+        self.Gaussian_params = Thinlens(win,din,f,Lambda)
+        self.r1 = Mirror['Rin']
+        self.r2 = Mirror['Rout']
+        self.dout = Mirror['dout']
+        self.din = din
+        self.angle= Angle
+        
+        pass
