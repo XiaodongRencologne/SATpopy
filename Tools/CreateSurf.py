@@ -91,7 +91,7 @@ lenses = [lens1_face1,lens1_face2,
           lens3_face1,lens3_face2]
 lens_inf = np.cumsum(np.array([0.0, 3.5,51.524,3.756,10.008,2.009]))
 # %%
-Np = 101
+Np = 1001
 Kspace = 1
 Ktip = 0
 n=0
