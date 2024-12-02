@@ -246,3 +246,15 @@ def DrawBeamCountour2(Mirror,Nin=301,Nout=301,size=2.5,color='b',offset=0,**kwar
     z = np.append(zin,zout)+offset
     return z, Countour_in, Countour_out
 # %%
+def beam_para(T,T_angle,var, Type = 'lambda'):
+    c = 299792458000 #mm/s
+    if Type == 'lambda':
+        Lambda = var
+    elif Type == 'freq':
+        Lambda = c / (var*10**9)
+    #T_A = T_angle/190*np.pi
+    # Half angluar size of Gaussian beam
+    Theta_c = np.sqrt(20*T_angle**2/np.abs(T)*np.log10(np.exp(1)))
+    w_0 = Lambda/np.pi/(Theta_c*np.pi/180)
+
+    return w_0, Theta_c

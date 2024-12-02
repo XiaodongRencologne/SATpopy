@@ -67,7 +67,7 @@ class Elliptical_Beam():
                  Taper, T_angle, 
                  polarisation='linear', 
                  polarisation_angle=0,
-                 far_forced = 'off',
+                 far_forced = 'on',
                  factor = [0,0],
                  frequency_index_for_plot = 1,
                  name = 'Gaussian_Elliptical_Beam'):
