@@ -109,13 +109,12 @@ class SAT_v1():
         self._create_ap()
         # electrical objects
         self._create_input(freq)
-        self._create_output(Rx_position=Rx_position)
+        self._create_output()
         # methods
         self._create_Analysis()
-        self._write_tor_tci()
-
-
-
+        self._create_commands()
+        #self._write_tor_tci()
+       
     def _create_coord(self, Rx_position = [0,0,0]):
         ## 1. define coordinate systems
         self.coor_ref = coor_sys([0,0,0],[0,0,0],ref_coor = global_coord,name='coor_feed_ref',)
@@ -282,7 +281,7 @@ class SAT_v1():
         self.Beam_cut = Spherical_cut(self.coor_cut,
                                       theta_range = self.cuts['theta_range'],
                                       phi_range = self.cuts['phi_range'],
-                                      cut_type = self.cuts['polar'],
+                                      cut_type = self.cuts['type'],
                                       e_h = 'e_field',
                                       polarisation = 'linear',
                                       near_far='far',
@@ -326,7 +325,7 @@ class SAT_v1():
                              get_field_grid,get_field_cut]
         
     def _write_tor_tci(self,):
-        with open(self.outputfolder+'/sat_optics.tor','w') as f:
+        with open(self.outputfolder+'sat_optics.tor','w') as f:
             # write frequency
             f.writelines(self.freq_list.Str)
             self.commit['Frequency']+=self.freq_list.name
@@ -362,7 +361,7 @@ class SAT_v1():
                 f.writelines(item.Str)
                 self.commit['Methods']+=item.name+','
 
-        with open(self.outputfolder+'/sat_optics.tci','w') as f:
+        with open(self.outputfolder+'sat_optics.tci','w') as f:
             for item in self.command_list:
                 f.writelines(item.Str)
                 #self.commit['flow'] +=item.name
