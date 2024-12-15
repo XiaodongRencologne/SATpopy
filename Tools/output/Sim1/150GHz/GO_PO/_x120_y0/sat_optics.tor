@@ -1,0 +1,295 @@
+mechanical_axis  coor_sys
+(
+)
+
+coor_feed_ref  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: 0 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
+ y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
+ base       : ref(mechanical_axis)
+)
+
+coor_feed_offset  coor_sys
+(
+ origin     : struct(x: 120 mm, y: 0 mm, z: 0 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: -0.0),
+ y_axis     : struct(x: 0.0, y: -1.0, z: 1.2246467991473532e-16),
+ base       : ref(coor_feed_ref)
+)
+
+coor_feed_rot  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: 0 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
+ y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
+ base       : ref(coor_feed_offset)
+)
+
+coor_feed  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: 0 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
+ y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
+ base       : ref(coor_feed_rot)
+)
+
+coor_lens1  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: -803.9719951339465 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
+ y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
+ base       : ref(coor_feed_ref)
+)
+
+coor_lens2  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: -227.64396727901004 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
+ y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
+ base       : ref(coor_feed_ref)
+)
+
+coor_lens3  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: -71.77590111674095 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
+ y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
+ base       : ref(coor_feed_ref)
+)
+
+coor_Lyot  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: -815.5925014153912 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
+ y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
+ base       : ref(coor_feed_ref)
+)
+
+coor_vw  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: -1042.7065014153911 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: 0.0),
+ y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
+ base       : ref(coor_feed_ref)
+)
+
+coor_boresight_ref  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: 0 mm),
+ x_axis     : struct(x: 1.0, y: 0.0, z: -0.0),
+ y_axis     : struct(x: 0.0, y: -1.0, z: 1.2246467991473532e-16),
+ base       : ref(coor_feed_ref)
+)
+
+coor_cut  coor_sys
+(
+ origin     : struct(x: 0 mm, y: 0 mm, z: 0 mm),
+ x_axis     : struct(x: 0.9778870635738566, y: -0.0, z: 0.2091336675308408),
+ y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
+ base       : ref(coor_boresight_ref)
+)
+
+lens1   simple_lens
+(
+  coor_sys         :ref(coor_lens1),
+  diameter         :44.8 cm,
+  refractive_index :3.36,
+  loss_tangent     :0,
+  r1               :0 cm,
+  r2               :0 cm,
+  bs1              :0,
+  bs2              :0,
+  thickness        :4.34991 cm,
+  surface1_file    :../srf/lens1_f1.rsf,
+  surface2_file    :../srf/lens1_f2.rsf,
+  length_unit_in_files :cm,
+)
+
+lens2   simple_lens
+(
+  coor_sys         :ref(coor_lens2),
+  diameter         :44.8 cm,
+  refractive_index :3.36,
+  loss_tangent     :0,
+  r1               :0 cm,
+  r2               :0 cm,
+  bs1              :0,
+  bs2              :0,
+  thickness        :4.69671 cm,
+  surface1_file    :../srf/lens2_f1.rsf,
+  surface2_file    :../srf/lens2_f2.rsf,
+  length_unit_in_files :cm,
+)
+
+lens3   simple_lens
+(
+  coor_sys         :ref(coor_lens3),
+  diameter         :44.8 cm,
+  refractive_index :3.36,
+  loss_tangent     :0,
+  r1               :0 cm,
+  r2               :0 cm,
+  bs1              :0,
+  bs2              :0,
+  thickness        :2.96556 cm,
+  surface1_file    :../srf/lens3_f1.rsf,
+  surface2_file    :../srf/lens3_f2.rsf,
+  length_unit_in_files :cm,
+)
+
+rim_Lyot  elliptical_rim
+(
+  centre       : struct(x: 0 mm, y: 0 mm),
+  half_axis    : struct(x: 210 mm, y: 210 mm)
+)
+
+rim_vw  elliptical_rim
+(
+  centre       : struct(x: 0 mm, y: 0 mm),
+  half_axis    : struct(x: 287.6618694117068 mm, y: 287.6618694117068 mm)
+)
+
+Lyot   aperture_in_screen
+(
+  coor_sys      : ref(coor_Lyot),
+  rim           : ref(rim_Lyot),
+  infinity_shadow: on
+)
+
+vw   aperture_in_screen
+(
+  coor_sys      : ref(coor_vw),
+  rim           : ref(rim_vw),
+  infinity_shadow: on
+)
+
+freq_list  frequency
+(
+  frequency_list   : sequence(150 GHz,)
+)
+
+Gaussian_Elliptical_Beam  elliptical_pattern
+(
+  frequency      : ref(freq_list),
+  coor_sys       : ref(coor_feed),
+  taper          : -2.1714724,
+  taper_angles    : struct(zx:10.1161095,zy:11.8095882),
+  polarisation   : linear,
+  polarisation_angle   :90,
+  far_forced     : off,
+  factor         :struct(db:0,deg:0),
+  frequency_index_for_plot: 1
+)
+
+Gauss_circle  gaussian_beam_pattern
+(
+  frequency      : ref(freq_list),
+  coor_sys       : ref(coor_feed),
+  taper_angle    : 10.1161095,
+  taper          : -2.1714724,
+  polarisation   : linear_y
+)
+
+Beam_cut  spherical_cut
+(
+  coor_sys       : ref(coor_cut),
+  cut_type       : polar,
+  theta_range    : struct(start: -90, end: 90, np: 4001),
+  phi_range      : struct(start: 0, end: 180, np: 13),
+  e_h            : e_field,
+  polarisation   : linear,
+  near_far       : far,
+  near_dist      : 100 m,
+  file_name      : Beam_cut.cut
+)
+
+Beam_grid  spherical_grid
+(
+  coor_sys       : ref(coor_cut),
+  grid_type      : elevation_and_azimuth,
+  x_range        : struct(start: -20.0, end: 20.0, np: 1001),
+  y_range        : struct(start: -20.0, end: 20.0, np: 1001),
+  Truncation     : rectangular,
+  e_h            : e_field,
+  Polarisation   : linear,
+  near_far       : far,
+  near_dist      : 100 m,
+  file_name      : Beam_grid.grd,
+  file_format    : TICRA,
+)
+
+lens1_PO  po_lens
+(
+  frequency     :ref(freq_list),
+  lens          :ref(lens1),
+  get_field     :lens_in_screen,
+  method        :go_plus_po,
+  po_points     :struct(face1_po1:0, face1_po2:0,
+                           face2_po1:0, face2_po2:0),
+  factor        :struct(db:0,deg:0),
+spill_over      :on,
+current_file_face1 :lens1_PO_face1.cur,
+current_file_face2 :lens1_PO_face2.cur,
+)
+
+lens2_PO  po_lens
+(
+  frequency     :ref(freq_list),
+  lens          :ref(lens2),
+  get_field     :lens_in_screen,
+  method        :go_plus_po,
+  po_points     :struct(face1_po1:0, face1_po2:0,
+                           face2_po1:0, face2_po2:0),
+  factor        :struct(db:0,deg:0),
+spill_over      :on,
+current_file_face1 :lens2_PO_face1.cur,
+current_file_face2 :lens2_PO_face2.cur,
+)
+
+lens3_PO  po_lens
+(
+  frequency     :ref(freq_list),
+  lens          :ref(lens3),
+  get_field     :lens_in_screen,
+  method        :go_plus_po,
+  po_points     :struct(face1_po1:0, face1_po2:0,
+                           face2_po1:0, face2_po2:0),
+  factor        :struct(db:0,deg:0),
+spill_over      :on,
+current_file_face1 :lens3_PO_face1.cur,
+current_file_face2 :lens3_PO_face2.cur,
+)
+
+POA_Lyot  po_aperture_in_screen
+(
+  frequency     :ref(freq_list),
+  scatterer     :ref(Lyot),
+  method        :po_plus_ptd,
+  po_points      :struct(po1:0, po2:0),
+  ptd_points     :sequence(
+                              struct(edge:-1,
+                                     ptd:0),
+                              ),
+  factor        :struct(db:0,deg:0),
+spill_over      :on,
+ray_output      :none,
+  file_name      : POA_Lyot
+)
+
+POA_VW  po_aperture_in_screen
+(
+  frequency     :ref(freq_list),
+  scatterer     :ref(vw),
+  method        :po_plus_ptd,
+  po_points      :struct(po1:0, po2:0),
+  ptd_points     :sequence(
+                              struct(edge:-1,
+                                     ptd:0),
+                              ),
+  factor        :struct(db:0,deg:0),
+spill_over      :on,
+ray_output      :none,
+  file_name      : POA_VW
+)
+

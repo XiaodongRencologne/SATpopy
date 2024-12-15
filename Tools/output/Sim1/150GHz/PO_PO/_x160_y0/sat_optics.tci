@@ -1,0 +1,46 @@
+COMMAND OBJECT lens3_PO get_currents &
+(   source                : sequence(ref(Gaussian_Elliptical_Beam),),&
+field_accuracy           : -80,&
+auto_convergence_of_po    : on,&
+convergence_on_scatterer  : sequence(ref(lens2),),&
+max_bisections            : 5,&
+integration_grid_limit    : off,&
+)
+COMMAND OBJECT lens2_PO get_currents &
+(   source                : sequence(ref(lens3_PO),),&
+field_accuracy           : -80,&
+auto_convergence_of_po    : on,&
+convergence_on_scatterer  : sequence(ref(lens1),),&
+max_bisections            : 5,&
+integration_grid_limit    : off,&
+)
+COMMAND OBJECT lens1_PO get_currents &
+(   source                : sequence(ref(lens2_PO),),&
+field_accuracy           : -80,&
+auto_convergence_of_po    : on,&
+convergence_on_scatterer  : sequence(ref(Lyot),),&
+max_bisections            : 5,&
+integration_grid_limit    : off,&
+)
+COMMAND OBJECT POA_Lyot get_currents &
+(   source                : sequence(ref(lens1_PO),),&
+field_accuracy           : -80,&
+auto_convergence_of_po    : on,&
+convergence_on_scatterer  : sequence(ref(vw),),&
+max_bisections            : 5,&
+integration_grid_limit    : off,&
+)
+COMMAND OBJECT POA_VW get_currents &
+(   source                : sequence(ref(POA_Lyot),),&
+field_accuracy           : -80,&
+auto_convergence_of_po    : on,&
+convergence_on_output_grid  : sequence(ref(Beam_grid),),&
+max_bisections            : 5,&
+integration_grid_limit    : off,&
+)
+COMMAND OBJECT Beam_grid get_field &
+(  source                : sequence(ref(POA_VW),)&
+)
+COMMAND OBJECT Beam_cut get_field &
+(  source                : sequence(ref(POA_VW),)&
+)

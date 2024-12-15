@@ -13,14 +13,15 @@ def run_command(command):
                                stderr = subprocess.PIPE,
                                text=True)
     for line in process.stdout:
-        print(line, end="") 
+        print(line)
     while True:
         output = process.stdout.readline()
         if process.poll() is not None:
-            print(f"Process finished with exit code: {process.poll()}", flush = True)
+            print(f"Process finished with exit code: {process.poll()}")
             break
         time.sleep(1)
     print('command completed!!')
+
 
 def run_grasp(command):
     #import shlex
@@ -31,15 +32,14 @@ def run_grasp(command):
                                stderr = subprocess.PIPE,
                                text=True)
     for line in process.stdout:
-        print(line, end="") 
+        print(line)
     while True:
         output = process.stdout.readline()
         if process.poll() is not None:
-            print(f"Process finished with exit code: {process.poll()}", flush = True)
+            print(f"Process finished with exit code: {process.poll()}")
             break
         time.sleep(1)
     print('command completed!!')
-
 #%%
 
 #run_command('python test.py')

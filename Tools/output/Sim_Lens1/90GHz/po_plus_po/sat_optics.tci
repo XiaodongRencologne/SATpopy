@@ -1,0 +1,14 @@
+COMMAND OBJECT lens1_PO get_currents &
+(   source                : sequence(ref(Gauss_circle),),&
+field_accuracy           : -80,&
+auto_convergence_of_po    : on,&
+convergence_on_output_grid  : sequence(ref(Beam_grid),),&
+max_bisections            : 5,&
+integration_grid_limit    : off,&
+)
+COMMAND OBJECT Beam_grid get_field &
+(  source                : sequence(ref(lens1_PO),)&
+)
+COMMAND OBJECT Beam_cut get_field &
+(  source                : sequence(ref(lens1_PO),)&
+)

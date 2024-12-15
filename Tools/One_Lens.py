@@ -14,7 +14,7 @@ L_lens2_1    = 57.632802785493645
 L_lens1_Lyot = 1.162050628144469
 L_Ly_vw      = 22.7114
 
-L_lens1_ref = L_lensFp_3 + L_lens3_2 + L_lens2_1
+L_lens1_ref = 82#L_lensFp_3 + L_lens3_2 + L_lens2_1
 L_lens2_ref = L_lensFp_3 + L_lens3_2
 L_lens3_ref = L_lensFp_3 
 L_Ly_ref = L_lens1_ref + L_lens1_Lyot
@@ -25,9 +25,10 @@ Feed_list = {'90GHz': {'freq': 90,
                        'Ellip_Taper': -2.1714724,
                        'T_angle_x' : 15.4270683,
                        'T_angle_y' : 20.2798893,
-                       'Gauss_Taper':  -20*np.log10(np.exp(1)),
-                       'Gauss_Tangle': 30.8,
-                       'beam_radius': '1.972 mm',
+                       'Gauss_Taper':  -3,
+                       'Gauss_Tangle': 16.042818263663047,
+                       'beam_radius': '2.225480346521284 mm',
+                       'Theta_c':27.297771233151025 ,
                        'phase_front_radius': '0 mm'},
             '150GHz': {'freq':150,
                        'Ellip_Taper': -2.1714724,
@@ -72,7 +73,7 @@ lens_diameter1 = 44.8 # cm
 lens_diameter2 = 44.8 # cm
 lens_diameter3 = 44.8 # cm
 
-class SAT_v1():
+class Lens_v1():
     def __init__(self, 
                  freq,
                  Rx_position,
@@ -87,7 +88,7 @@ class SAT_v1():
                           'theta_range': [-90,90,4001],
                           'phi_range':[0,180,13]},
                  outputfolder=''):
-        self.eff_focal_length = 569.56 #mm
+        self.eff_focal_length = 800 #mm
         self.grids = grids
         self.cuts = cuts
         self.method =method
@@ -146,14 +147,15 @@ class SAT_v1():
     def _create_lens(self):
         ### 2. define lenses
         self.lens1 = simple_lens(self.coor_lens1, lens_diameter1, 
-                                SILICON, loss_tangent = 0, 
-                                r1 = '0 cm', r2 = '0 cm', bs1 = 0, bs2 = 0,
-                                thickness = '4.34991 cm',#4.349908221542306 cm',
-                                surf_f1 = '../srf/lens1_f1.rsf',
-                                surf_f2 = '../srf/lens1_f2.rsf',
-                                lengthUnit = 'cm',
+                                SILICON, 
+                                loss_tangent = 0, 
+                                r1 = '0 cm', 
+                                r2 = '188.8 cm',
+                                bs1 = 0,
+                                bs2 = -11.28960000000000,
+                                thickness = '2 cm',#4.349908221542306 cm',
                                 name='lens1')
-
+        """
         self.lens2 = simple_lens(self.coor_lens2, lens_diameter2, 
                                 SILICON, loss_tangent = 0, 
                                 r1 = '0 cm', r2 = '0 cm', bs1 = 0, bs2 = 0,
@@ -170,10 +172,12 @@ class SAT_v1():
                                 surf_f1 = '../srf/lens3_f1.rsf',
                                 surf_f2 = '../srf/lens3_f2.rsf',
                                 lengthUnit = 'cm',
-                                name='lens3')        
+                                name='lens3')     
+        """   
         self.lens_list = [self.lens1,
-                          self.lens2,
-                          self.lens3]
+                          #self.lens2,
+                          #self.lens3
+                          ]
         
     def _create_rim(self):
         self.rim_Lyot = rim([0,0], [210,210], Type = 'elliptical_rim',name='rim_Lyot')
@@ -184,8 +188,9 @@ class SAT_v1():
     def _create_ap(self):
         self.Lyot = Aperture_screen(self.coor_Lyot, self.rim_Lyot,infinity_shadow = 'on', name='Lyot')
         self.VW = Aperture_screen(self.coor_vw, self.rim_vw,infinity_shadow = 'on', name='vw')
-        self.ap_list=[self.Lyot,
-                      self.VW]
+        self.ap_list=[#self.Lyot,
+                      #self.VW
+                      ]
         
     def _create_input(self,freq):
         self.freq_list = frequencyList([Feed_list[freq]['freq']], name ='freq_list')
@@ -200,8 +205,8 @@ class SAT_v1():
                                           name = 'Gaussian_Elliptical_Beam')
         
         self.Feed_Gaussian = GaussBeam(self.freq_list,self.coor_feed,
-                                       Feed_list[freq]['T_angle_x'],
-                                       Feed_list[freq]['Ellip_Taper'],
+                                       Feed_list[freq]['Gauss_Tangle'],
+                                       Feed_list[freq]['Gauss_Taper'],
                                        polarisation='linear_y',
                                        name='Gauss_circle')
         
@@ -220,7 +225,7 @@ class SAT_v1():
                                 current_file_face2='',
                                 gbc_file='',
                                 name = 'lens1_PO')
-
+        '''
         self.PO_lens2 =lens_PO(self.freq_list,
                         self.lens2,get_field='lens_in_screen',
                         method=self.method['lens'], waist_radius=0,
@@ -240,7 +245,7 @@ class SAT_v1():
                         current_file_face2='',
                         gbc_file='',
                         name = 'lens3_PO')
-
+        
         self.POA_Lyot = aperture_po(self.freq_list,
                             self.Lyot,
                             method=self.method['screen'],
@@ -264,8 +269,14 @@ class SAT_v1():
                        file_name='',
                        name = 'POA_VW'
                        )
+        '''
         
-        self.method_list = [self.PO_lens1,self.PO_lens2,self.PO_lens3,self.POA_Lyot,self.POA_VW] 
+        self.method_list = [self.PO_lens1,
+                            #self.PO_lens2,
+                            #self.PO_lens3,
+                            #self.POA_Lyot,
+                            #self.POA_VW
+                            ] 
         pass
     def _create_output(self):
         self.Beam_grid = Spherical_grid(self.coor_cut,
@@ -292,6 +303,7 @@ class SAT_v1():
     
     def _create_commands(self):
         # create commands flow
+        '''
         get_lens3_cur = get_current(self.PO_lens3,[self.Feed_ellip],
                                     accuracy= -80,
                                     auto_convergence=True,
@@ -301,12 +313,13 @@ class SAT_v1():
                                     accuracy= -80,
                                     auto_convergence=True,
                                     convergence_on_scatterer = [self.lens1])
-
-        get_lens1_cur = get_current(self.PO_lens1,[self.PO_lens2],
+        '''
+        get_lens1_cur = get_current(self.PO_lens1,[self.Feed_Gaussian],
                                     accuracy= -80,
                                     auto_convergence=True,
-                                    convergence_on_scatterer = [self.Lyot])
-
+                                    #convergence_on_scatterer = [self.Lyot]
+                                    convergence_on_output_grid = [self.Beam_grid])
+        '''
         get_Lyot_cur = get_current(self.POA_Lyot,[self.PO_lens1],
                                     accuracy= -80,
                                     auto_convergence=True,
@@ -316,13 +329,15 @@ class SAT_v1():
                                 accuracy= -80,
                                 auto_convergence=True,
                                 convergence_on_output_grid = [self.Beam_grid])
+        '''
 
+        get_field_grid = get_field(self.Beam_grid, [self.PO_lens1])
+        get_field_cut = get_field(self.Beam_cut, [self.PO_lens1])
 
-        get_field_grid = get_field(self.Beam_grid, [self.POA_VW])
-        get_field_cut = get_field(self.Beam_cut, [self.POA_VW])
-
-        self.command_list = [get_lens3_cur,get_lens2_cur,get_lens1_cur,
-                             get_Lyot_cur, get_VW_cur,
+        self.command_list = [#get_lens3_cur,
+                             #get_lens2_cur,
+                             get_lens1_cur,
+                             #get_Lyot_cur, get_VW_cur,
                              get_field_grid,get_field_cut]
         
     def _write_tor_tci(self,):

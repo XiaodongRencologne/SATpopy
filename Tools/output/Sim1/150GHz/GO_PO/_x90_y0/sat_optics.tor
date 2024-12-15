@@ -1,8 +1,3 @@
-freq_list  frequency
-(
-  frequency_list   : sequence(150 GHz,)
-)
-
 mechanical_axis  coor_sys
 (
 )
@@ -17,7 +12,7 @@ coor_feed_ref  coor_sys
 
 coor_feed_offset  coor_sys
 (
- origin     : struct(x: 0 mm, y: 0 mm, z: 0 mm),
+ origin     : struct(x: 90 mm, y: 0 mm, z: 0 mm),
  x_axis     : struct(x: 1.0, y: 0.0, z: -0.0),
  y_axis     : struct(x: 0.0, y: -1.0, z: 1.2246467991473532e-16),
  base       : ref(coor_feed_ref)
@@ -87,10 +82,10 @@ coor_boresight_ref  coor_sys
  base       : ref(coor_feed_ref)
 )
 
-coor_boresight_ref  coor_sys
+coor_cut  coor_sys
 (
  origin     : struct(x: 0 mm, y: 0 mm, z: 0 mm),
- x_axis     : struct(x: 1.0, y: 0.0, z: -0.0),
+ x_axis     : struct(x: 0.9875413150430414, y: -0.0, z: 0.15735994116375465),
  y_axis     : struct(x: 0.0, y: 1.0, z: 0.0),
  base       : ref(coor_boresight_ref)
 )
@@ -106,8 +101,8 @@ lens1   simple_lens
   bs1              :0,
   bs2              :0,
   thickness        :4.34991 cm,
-  surface1_file    :./srf/lens1_f1.rsf,
-  surface2_file    :./srf/lens1_f2.rsf,
+  surface1_file    :../srf/lens1_f1.rsf,
+  surface2_file    :../srf/lens1_f2.rsf,
   length_unit_in_files :cm,
 )
 
@@ -122,8 +117,8 @@ lens2   simple_lens
   bs1              :0,
   bs2              :0,
   thickness        :4.69671 cm,
-  surface1_file    :./srf/lens2_f1.rsf,
-  surface2_file    :./srf/lens2_f2.rsf,
+  surface1_file    :../srf/lens2_f1.rsf,
+  surface2_file    :../srf/lens2_f2.rsf,
   length_unit_in_files :cm,
 )
 
@@ -138,8 +133,8 @@ lens3   simple_lens
   bs1              :0,
   bs2              :0,
   thickness        :2.96556 cm,
-  surface1_file    :./srf/lens3_f1.rsf,
-  surface2_file    :./srf/lens3_f2.rsf,
+  surface1_file    :../srf/lens3_f1.rsf,
+  surface2_file    :../srf/lens3_f2.rsf,
   length_unit_in_files :cm,
 )
 
@@ -198,7 +193,7 @@ Gauss_circle  gaussian_beam_pattern
 
 Beam_cut  spherical_cut
 (
-  coor_sys       : ref(coor_boresight_ref),
+  coor_sys       : ref(coor_cut),
   cut_type       : polar,
   theta_range    : struct(start: -90, end: 90, np: 4001),
   phi_range      : struct(start: 0, end: 180, np: 13),
@@ -211,7 +206,7 @@ Beam_cut  spherical_cut
 
 Beam_grid  spherical_grid
 (
-  coor_sys       : ref(coor_boresight_ref),
+  coor_sys       : ref(coor_cut),
   grid_type      : elevation_and_azimuth,
   x_range        : struct(start: -20.0, end: 20.0, np: 1001),
   y_range        : struct(start: -20.0, end: 20.0, np: 1001),

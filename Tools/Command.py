@@ -61,7 +61,7 @@ class get_current():
         
         if self.obsolete_conv_on_po_grid != None:
             Str += 'obsolete_conv_on_po_grid   : '
-        Str += ')&\n\n'
+        Str += ')\n'
         return Str
 
 # %%
@@ -82,5 +82,5 @@ class get_field():
         for item in self.source:
             Str += 'ref('+ item.name +'),'
         Str += ')&\n'
-        Str += ') &\n\n'
+        Str += ')\n'
         return Str
