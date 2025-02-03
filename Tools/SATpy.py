@@ -55,6 +55,7 @@ Feed_list = {'90GHz': {'freq': 90,
                        'phase_front_radius': '0 mm'}
             }
 
+
 grid_type = 'El&Az'
 Center_angle = [0.0, 0.0]
 x_range = 40
@@ -78,7 +79,7 @@ class SAT_v1():
                  Rx_position,
                  method = {'lens':'go_plus_po',
                            'screen': 'po_plus_ptd'},
-                 grids = {'type': 'El&Az',
+                 grids = {'type': 'uv',
                           'center':[0.0,0.0],
                           'range': [40,40],
                           'Points': [1001,1001]},
