@@ -116,7 +116,7 @@ class SAT_v1():
         self._create_commands()
         #self._write_tor_tci()
        
-    def _create_coord(self, Rx_position = [0,0,0]):
+    def _create_coord(self, Rx_position = [0,0,0], roatation = 0):
         ## 1. define coordinate systems
         self.coor_ref = coor_sys([0,0,0],[0,0,0],ref_coor = global_coord,name='coor_feed_ref',)
         self.coor_feed_offset = coor_sys(Rx_position,[np.pi,0,0],ref_coor = self.coor_ref,name='coor_feed_offset',)

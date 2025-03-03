@@ -20,7 +20,10 @@ Rxs = [[0,0,0],
 for item in Rxs:
     filefolder = folder_parent+'_x'+str(item[0])+'_y'+str(item[1])+'\\'
     Path(filefolder).mkdir(parents=True,exist_ok=True)
-    optics =SAT_v1(freq,item,method = method,outputfolder=filefolder)
+    optics =SAT_v1(freq,
+                   item,
+                   method = method,
+                   outputfolder=filefolder)
     optics._write_tor_tci()
     del(optics)
     #command ='copy '+str(Path.cwd())+'\\batch.gxp'+' '+str(Path.cwd())+ '\\' +item
