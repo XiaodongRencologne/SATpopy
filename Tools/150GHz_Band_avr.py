@@ -25,7 +25,7 @@ for item in freq_list:
                             Rx,
                             grids = {'type': 'EloverAz',
                                       'center':[0.0,0.0],
-                                      'range': [5,5],
+                                      'range': [10,10],
                                       'Points': [2001,2001]},
                             cuts  = {'type': 'polar',
                                       'theta_center':[0.0,0.0],

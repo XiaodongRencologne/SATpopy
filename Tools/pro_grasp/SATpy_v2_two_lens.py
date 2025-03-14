@@ -1,6 +1,5 @@
 #%%
 import numpy as np
-
 from .GOElement import coor_sys, simple_lens, Aperture_screen, rim, global_coord
 from .EOElement import frequencyList, GaussBeam, GaussBeam_Near, Elliptical_Beam, Tabulated_pattern
 from .EOElement import lens_PO,aperture_po
@@ -89,7 +88,7 @@ class SAT_v2():
                           'theta_range': [-50,50,60001],
                           'phi_range':[0,90,3]},
                  outputfolder='',
-                 srf_folder = '../srf/'):
+                 srf_folder = '../srf/',):
         self.eff_focal_length = 569.56 #mm
         self.grids = grids
         self.cuts = cuts
@@ -101,7 +100,6 @@ class SAT_v2():
         self.ap_list = []
         self.lens_list = []
         self.srf_folder = srf_folder
-
         self.commit = {'Geometry': '',
                        'Feed': '',
                        'Frequency':'',
@@ -172,7 +170,7 @@ class SAT_v2():
                                 surf_f2 = '"'+self.srf_folder+'lens2_f2.rsf"',
                                 lengthUnit = 'cm',
                                 name='lens2')
-
+        
         self.lens3 = simple_lens(self.coor_lens3, lens_diameter3, 
                                 SILICON, loss_tangent = 0, 
                                 r1 = '0 cm', r2 = '0 cm', bs1 = 0, bs2 = 0,
@@ -182,8 +180,7 @@ class SAT_v2():
                                 lengthUnit = 'cm',
                                 name='lens3')        
         self.lens_list = [self.lens1,
-                          self.lens2,
-                          self.lens3]
+                          self.lens2]
         
     def _create_rim(self):
         self.rim_Lyot = rim([0,0], [210,210], Type = 'elliptical_rim',name='rim_Lyot')
@@ -294,7 +291,11 @@ class SAT_v2():
                        name = 'POA_VW'
                        )
         
-        self.method_list = [self.PO_lens1,self.PO_lens2,self.PO_lens3,self.POA_Lyot,self.POA_VW] 
+        self.method_list = [self.PO_lens1,
+                            self.PO_lens2,
+                            #self.PO_lens3,
+                            self.POA_Lyot,
+                            self.POA_VW] 
         pass
     def _create_output(self):
         self.Beam_grid = Spherical_grid(self.coor_grd,
@@ -321,6 +322,7 @@ class SAT_v2():
     
     def _create_commands(self):
         # create commands flow
+        '''
         get_lens3_cur = get_current(self.PO_lens3,[self.feedhorn],
                                     accuracy= -80,
                                     auto_convergence=True,
@@ -330,7 +332,12 @@ class SAT_v2():
                                     accuracy= -80,
                                     auto_convergence=True,
                                     convergence_on_scatterer = [self.lens1])
-
+        '''
+        get_lens2_cur = get_current(self.PO_lens2,[self.feedhorn],
+                                    accuracy= -80,
+                                    auto_convergence=True,
+                                    convergence_on_scatterer = [self.lens1])
+        
         get_lens1_cur = get_current(self.PO_lens1,[self.PO_lens2],
                                     accuracy= -80,
                                     auto_convergence=True,
@@ -350,7 +357,8 @@ class SAT_v2():
         get_field_grid = get_field(self.Beam_grid, [self.POA_VW])
         get_field_cut = get_field(self.Beam_cut, [self.POA_VW])
 
-        self.command_list = [get_lens3_cur,get_lens2_cur,get_lens1_cur,
+        self.command_list = [#get_lens3_cur,
+                             get_lens2_cur,get_lens1_cur,
                              get_Lyot_cur, get_VW_cur,
                              get_field_grid,get_field_cut]
         
