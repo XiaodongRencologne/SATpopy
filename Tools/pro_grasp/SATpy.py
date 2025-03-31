@@ -134,7 +134,7 @@ class SAT_v1():
         self.coor_vw = coor_sys([0,0,-L_vw_ref*10],[0,0,0],ref_coor = self.coor_ref, name = 'coor_vw')
         self.coor_boresight_ref = coor_sys([0,0,0],[np.pi,0,0],ref_coor = self.coor_ref,name='coor_boresight_ref')
         Ax = -Rx_position[0]/self.eff_focal_length
-        Ay = Rx_position[1]/self.eff_focal_length
+        Ay = -Rx_position[1]/self.eff_focal_length
         print(Ax/np.pi*180,Ay/np.pi*180)
         self.coor_cut = coor_sys([0,0,0],[Ay,Ax,0],ref_coor = self.coor_boresight_ref,name='coor_cut')
         self.coor_list = [global_coord, self.coor_ref, 

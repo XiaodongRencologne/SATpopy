@@ -4,7 +4,7 @@ import numpy as np
 from .GOElement import coor_sys, simple_lens, Aperture_screen, rim, global_coord
 from .EOElement import frequencyList, GaussBeam, GaussBeam_Near, Elliptical_Beam, Tabulated_pattern
 from .EOElement import lens_PO,aperture_po
-from .EOElement import Spherical_grid,Spherical_cut
+from .EOElement import Spherical_grid,Spherical_cut,Planar_grid
 
 from .Command import get_current, get_field
 SILICON = 3.36
@@ -76,6 +76,7 @@ lens_diameter3 = 44.8 # cm
 class SAT_v2():
     def __init__(self, 
                  freq,
+                 horn_polar_angle,
                  Horn_beam_file,
                  Rx_position,
                  method = {'lens':'go_plus_po',
@@ -91,6 +92,7 @@ class SAT_v2():
                  outputfolder='',
                  srf_folder = '../srf/'):
         self.eff_focal_length = 569.56 #mm
+        self.horn_polar_angle = horn_polar_angle
         self.grids = grids
         self.cuts = cuts
         self.method =method
@@ -125,7 +127,7 @@ class SAT_v2():
         ## 1. define coordinate systems
         self.coor_ref = coor_sys([0,0,0],[0,0,0],ref_coor = global_coord,name='coor_feed_ref',)
         self.coor_feed_offset = coor_sys(self.Rx_position,[np.pi,0,0],ref_coor = self.coor_ref,name='coor_feed_offset',)
-        self.coor_feed_rot = coor_sys([0,0,0],[0,0,0],ref_coor = self.coor_feed_offset,name='coor_feed_rot',)
+        self.coor_feed_rot = coor_sys([0,0,0],[0,0,self.horn_polar_angle*np.pi/180],ref_coor = self.coor_feed_offset,name='coor_feed_rot',)
         self.coor_feed = coor_sys([0,0,0],[0,0,0],ref_coor = self.coor_feed_rot,name='coor_feed',)
 
         self.coor_lens3 = coor_sys([0,0,-L_lens3_ref*10],[0,0,0],ref_coor = self.coor_ref,name='coor_lens3',)
@@ -298,7 +300,7 @@ class SAT_v2():
         pass
     def _create_output(self):
         self.Beam_grid = Spherical_grid(self.coor_grd,
-                                        self.grids['range'][0],self.grids['range'][0],
+                                        self.grids['range'][0],self.grids['range'][1],
                                         self.grids['center'][0], self.grids['center'][1],
                                         self.grids['Points'][0], self.grids['Points'][1],
                                         grid_type = self.grids['type'],
@@ -317,7 +319,19 @@ class SAT_v2():
                                       near_far='far',
                                       filename='Beam_cut_Rx_x'+str(self.Rx_position[1])+'y'+str(self.Rx_position[1])+'_'+str(self.freq)+'GHz.cut',
                                       name='Beam_cut_Rx_x'+str(self.Rx_position[1])+'y'+str(self.Rx_position[1])+'_'+str(self.freq))
-        self.output_list = [self.Beam_cut,self.Beam_grid]
+        
+        self.Lyot_grid = Planar_grid(self.coor_Lyot,
+                                    0,0,
+                                    1001, 1001,
+                                    1001, 1001,
+                                    grid_type= 'xy',
+                                    e_h = 'e_field',
+                                    polarisation = 'linear',
+                                    near_dist=0,
+                                    filename='Lyot_stop_grid_'+str(self.freq)+'GHz.grd',
+                                    name='Lyot_planar_grid')
+        
+        self.output_list = [self.Beam_cut,self.Beam_grid,self.Lyot_grid]
     
     def _create_commands(self):
         # create commands flow
@@ -334,7 +348,10 @@ class SAT_v2():
         get_lens1_cur = get_current(self.PO_lens1,[self.PO_lens2],
                                     accuracy= -80,
                                     auto_convergence=True,
-                                    convergence_on_scatterer = [self.Lyot])
+                                    convergence_on_scatterer = [self.Lyot],
+                                    convergence_on_output_grid = [self.Lyot_grid])
+        
+        get_field_grid = get_field(self.Lyot_grid, [self.PO_lens1])
 
         get_Lyot_cur = get_current(self.POA_Lyot,[self.PO_lens1],
                                     accuracy= -80,

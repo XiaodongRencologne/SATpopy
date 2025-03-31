@@ -3,7 +3,7 @@ import numpy as np
 #import W2GRASP_GO, W2GRASP_EO
 from .W2GRASP_EO import write_frequency_list, write_Gauss_beam, write_Gauss_beam_near,write_Gauss_Ellip_Beam,write_tabulated_pattern
 from .W2GRASP_EO import write_lens_po, write_Aperture_PO
-from .W2GRASP_EO import write_spherical_grid, write_spherical_cut
+from .W2GRASP_EO import write_spherical_grid, write_spherical_cut, write_planar_grid
 #%%
 
 '''
@@ -100,7 +100,7 @@ class Tabulated_pattern():
                  file_name,
                  number_cuts,
                  f_format='TICRA',
-                 far_field_forced='off',
+                 far_field_forced='on',
                  name='GaussFeed1'):
         self.coor_sys =coor_sys
         self.freqList = freqList
@@ -130,7 +130,7 @@ class lens_PO():
                  get_field='lens_in_screen',
                  method='go_plus_po', waist_radius=0,
                  po_points={'face1':[0,0],'face2': [0,0]}, factor=[0,0],
-                 spill_over='off',coor_sys='', 
+                 spill_over='on',coor_sys='', 
                  current_file_face1='', 
                  current_file_face2='',
                  gbc_file='',
@@ -177,7 +177,7 @@ class aperture_po():
                  method='po_plus_ptd',
                  po_points=[0,0], ptd_points= [[-1,0]],
                  factor=[0,0],
-                 spill_over='off',
+                 spill_over='on',
                  ray_output='none',
                  coor_sys='', 
                  file_name='',
@@ -244,7 +244,6 @@ class Spherical_grid():
         self.e_h = e_h
         self.polarisation = polarisation
 
-
         self.Str = write_spherical_grid(self.name,
                                         self.coor_sys.name,
                                         self.Beam_size[0],self.Beam_size[1],
@@ -257,6 +256,47 @@ class Spherical_grid():
                                         near_far=self.near_far,
                                         near_dist=self.near_dist,
                                         filename=self.outputfile)
+        
+
+class Planar_grid():
+    def __init__(self,
+                 coor_sys,
+                 x0,y0,
+                 x_range, y_range,
+                 Nx,Ny,
+                 grid_type= 'xy',
+                 e_h = 'e_field',
+                 polarisation = 'linear',
+                 near_dist=100,
+                 filename='',
+                 name='spher_grid'):
+        self.name = name
+        self.coor_sys = coor_sys
+        self.near_dist = near_dist
+        self.outputfile = filename
+        self.grid_type = grid_type
+        self.polarisation = polarisation
+        self.e_h = e_h
+        self.x0 = x0
+        self.y0 = y0
+        self.xrange = x_range
+        self.yrange = y_range
+        self.Nx = Nx 
+        self.Ny = Ny
+        
+        self.Str = write_planar_grid(self.name,
+                                    self.coor_sys.name,
+                                    near_dist=self.near_dist,
+                                    x_range=[self.x0 - self.xrange/2,
+                                            self.x0 + self.xrange/2,
+                                            Nx],
+                                    y_range=[self.y0 - self.yrange/2,
+                                            self.y0 + self.yrange/2,
+                                            Ny],
+                                    grid_type=self.grid_type,
+                                    e_h = self.e_h,
+                                    polarisation = self.polarisation,
+                                    filename=self.outputfile)
 #%%
 class Spherical_cut():
     def __init__(self,

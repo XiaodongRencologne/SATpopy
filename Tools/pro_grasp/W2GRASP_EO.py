@@ -62,7 +62,7 @@ def write_Gauss_Ellip_Beam(name,
                            taper,taper_angle,
                            polarisation = 'linear',
                            polarisation_angle = 0,
-                           far_forced = 'off',
+                           far_forced = 'on',
                            factor =[0,0],
                            frequency_index_plot=1):
     
@@ -85,7 +85,7 @@ def write_tabulated_pattern(name,
                             f_name,
                             number_cuts,
                             f_format='TICRA',
-                            far_field_forced = 'off'):
+                            far_field_forced = 'on'):
     Str = ''
     Str += name + '  tabulated_pattern\n(\n'
     Str+='  frequency        : ref('+freq+'),\n'
@@ -94,6 +94,7 @@ def write_tabulated_pattern(name,
     Str+='  file_format      : '+f_format+',\n'
     Str+='  number_of_cuts   : '+str(number_cuts)+',\n'
     Str+='  far_forced : '+far_field_forced+',\n'
+    Str+='  power_norm : '+'on,\n'
     Str+=')\n\n'
     return Str
 
@@ -106,7 +107,7 @@ def write_single_po(name,freq,
                     po_points = [0,0],
                     ptd_points= [[-1,0]],
                     factor= [0,0],
-                    spill_over='off',
+                    spill_over='on',
                     coord_sys=None,
                     outputfile = ''):
     Method=['po_plus_ptd',
@@ -317,8 +318,11 @@ def write_spherical_grid(name,
 def write_planar_grid(name,
                       coor_sys,
                       near_dist=0,
-                      x_range=[-1,1,11],y_range=[-1,1,11],
+                      x_range=[-1,1,11],
+                      y_range=[-1,1,11],
                       grid_type='xy',
+                      e_h  = 'e_field',
+                      polarisation = 'linear',
                       filename=''):
     Str=''
     Str+=name+'  planar_grid\n(\n'
@@ -327,7 +331,10 @@ def write_planar_grid(name,
     Str+='  grid_type       : '+grid_type+',\n'
     Str+='  x_range         : struct(start:'+str(x_range[0])+', end:'+str(x_range[1])+', np:'+str(int(x_range[2]))+', unit: mm),\n'
     Str+='  y_range         : struct(start:'+str(y_range[0])+', end:'+str(y_range[1])+', np:'+str(int(y_range[2]))+'),\n'
-    if filename=='':
+    Str+='  e_h             : ' + e_h + ',\n'
+    Str+=' polarisation     : ' + polarisation + ',\n'
+
+    if filename =='':
         Str+='  file_name       : '+name+'.grd,\n'
     else:
         Str+='  file_name       : '+filename+',\n'
