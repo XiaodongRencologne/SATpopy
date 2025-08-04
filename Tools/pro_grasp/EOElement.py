@@ -21,6 +21,8 @@ class GaussBeam():
                  coor_sys,
                  T_angle,Taper,
                  polarisation='linear_x',
+                 far_forced = 'on',
+                 factor = [0,0],
                  name='GaussFeed1'):
         self.name = name
         self.freqList = freqList
@@ -34,7 +36,9 @@ class GaussBeam():
                                     self.coor_sys.name,
                                     polarisation = self.polarisation,
                                     taper_angle = self.T_angle,
-                                    taper = self.Taper)
+                                    taper = self.Taper,
+                                    far_forced=far_forced,
+                                    factor=factor)
         
 class GaussBeam_Near():
     def __init__(self,

@@ -1,9 +1,9 @@
-from pro_grasp import SATpy_v2_circular_feed as SATpy_v2
+from pro_grasp import SATpy_v2_ellip_feed as SATpy_v2
 import os
 import numpy as np
 
 """output folder"""
-folder = 'output/sim_bandpass/polarization_study_circularGaussian/circular_FeedBeam_15deg/'
+folder = 'output/sim_bandpass/polarization_study_circularGaussian/ellip_FeedBeam_using_90GHz/'
 if not os.path.exists(folder):
     os.mkdir(folder)
 beam_folder = '"D:/Xiaodong/SO/SAT_simple/SAT_simulations/sim_bandpass/150GHz_Band/cut/'
@@ -11,9 +11,10 @@ beam_folder = '"D:/Xiaodong/SO/SAT_simple/SAT_simulations/sim_bandpass/150GHz_Ba
 """Input data"""
 # Input 1 Rx position in focal plane:
 
-Rx_x_list = [0,20,40,60,80,100,120,140,150,160,170,180,190,200]
+#Rx_x_list = [20,40,60,80,100,120,140,150,160,170,180,190,200]
+Rx_x_list = [20,120,200]
 
-polar_angle_list = np.arange(0,180,5)
+polar_angle_list = np.arange(0,100,10)
 freq_list = [90,150,220]
 for Rx_x in Rx_x_list:
     Rx = [Rx_x,0,0]

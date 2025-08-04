@@ -11,7 +11,7 @@ beam_folder = '"D:/Xiaodong/SO/SAT_simple/SAT_simulations/sim_bandpass/150GHz_Ba
 """Input data"""
 # Input 1 Rx position in focal plane:
 
-Rx_x_list = np.arange(0,201,10)
+Rx_x_list = [0,20,60,100,160,180]
 
 for Rx_x in Rx_x_list:
     Rx = [Rx_x,0,0]

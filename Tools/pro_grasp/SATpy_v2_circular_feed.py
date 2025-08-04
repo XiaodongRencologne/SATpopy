@@ -26,7 +26,7 @@ Feed_list = {'90GHz': {'freq': 90,
                        'T_angle_x' : 15.4270683,
                        'T_angle_y' : 20.2798893,
                        'Gauss_Taper':  -20*np.log10(np.exp(1)),
-                       'Gauss_Tangle': 30.8,
+                       'Gauss_Tangle': 15.337046107661092,#21.4587538854736,#34.58035191541952,#
                        'beam_radius': '1.972 mm',
                        'phase_front_radius': '0 mm'},
             '150GHz': {'freq':150,
@@ -34,15 +34,17 @@ Feed_list = {'90GHz': {'freq': 90,
                        'T_angle_x' : 10.1161095,
                        'T_angle_y' : 11.8095882,
                        'Gauss_Taper': -20*np.log10(np.exp(1)),
-                       'Gauss_Tangle':20.232219,
+                       'Gauss_Tangle':15.337046107661092,#21.4587538854736,#34.58035191541952,#
                        'beam_radius': '1.802 mm',
                        'phase_front_radius': '0 mm'},
+            ## about is MhF
+            ## BELOW uhf
             '220GHz': {'freq':220,
                        'Ellip_Taper': -2.1714724,
                        'T_angle_x' : 7.060976,
                        'T_angle_y' : 7.9273612,
                        'Gauss_Taper': -20*np.log10(np.exp(1)),
-                       'Gauss_Tangle': 14.121952,
+                       'Gauss_Tangle': 15.337046107661092,#21.4587538854736,#15.337046107661092,#
                        'beam_radius': '1.760 mm',
                        'phase_front_radius': '0 mm'},
             '280GHz': {'freq':280,
@@ -232,12 +234,20 @@ class SAT_v2():
                                        name='Gauss_circle')
         '''
         self.freq_list = frequencyList([freq], name ='freq_'+str(freq))
+        '''
         self.feedhorn = Tabulated_pattern(self.freq_list,
                                           self.coor_feed,
                                           self.horn_beam_file,
                                           360,
                                           far_field_forced='on',
                                           name = 'Feed_'+str(freq))
+        '''
+        self.feedhorn = GaussBeam(self.freq_list,self.coor_feed,
+                                       Feed_list[str(freq)+'GHz']['Gauss_Tangle'],
+                                       Feed_list[str(freq)+'GHz']['Gauss_Taper'],
+                                       polarisation='linear_x',
+                                       far_forced='on',
+                                       name='Gauss_circle')
         self.input_list = [self.freq_list,self.feedhorn]
         
     def _create_Analysis(self):
@@ -335,18 +345,19 @@ class SAT_v2():
     
     def _create_commands(self):
         # create commands flow
+        accuracy = -80
         get_lens3_cur = get_current(self.PO_lens3,[self.feedhorn],
-                                    accuracy= -80,
+                                    accuracy= accuracy,
                                     auto_convergence=True,
                                     convergence_on_scatterer = [self.lens2])
 
         get_lens2_cur = get_current(self.PO_lens2,[self.PO_lens3],
-                                    accuracy= -80,
+                                    accuracy= accuracy,
                                     auto_convergence=True,
                                     convergence_on_scatterer = [self.lens1])
 
         get_lens1_cur = get_current(self.PO_lens1,[self.PO_lens2],
-                                    accuracy= -80,
+                                    accuracy= accuracy,
                                     auto_convergence=True,
                                     convergence_on_scatterer = [self.Lyot],
                                     convergence_on_output_grid = [self.Lyot_grid])
@@ -354,12 +365,12 @@ class SAT_v2():
         get_lyot_grid = get_field(self.Lyot_grid, [self.PO_lens1])
 
         get_Lyot_cur = get_current(self.POA_Lyot,[self.PO_lens1],
-                                    accuracy= -80,
+                                    accuracy= accuracy,
                                     auto_convergence=True,
                                     convergence_on_scatterer= [self.VW])
 
         get_VW_cur = get_current(self.POA_VW,[self.POA_Lyot],
-                                accuracy= -80,
+                                accuracy= accuracy,
                                 auto_convergence=True,
                                 convergence_on_output_grid = [self.Beam_grid])
 

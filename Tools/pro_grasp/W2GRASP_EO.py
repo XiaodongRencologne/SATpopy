@@ -23,14 +23,18 @@ def write_frequency_list(name,freq_list):
 def write_Gauss_beam(name,freq,
                      coor_sys,
                      taper_angle=11.894,taper=-8,
-                     polarisation='linear_x'):
+                     polarisation='linear_x',
+                     far_forced='on',factor=[0,0]):
     Str=''
     Str+=name+'  gaussian_beam_pattern\n(\n'
     Str+='  frequency      : ref('+freq+'),\n'
     Str+='  coor_sys       : ref('+coor_sys+'),\n'
     Str+='  taper_angle    : '+str(taper_angle)+',\n'
     Str+='  taper          : '+str(taper)+',\n'
-    Str+='  polarisation   : '+polarisation+'\n)\n\n'
+    Str+='  polarisation   : '+polarisation+',\n'
+    Str+='  far_forced     : '+far_forced+',\n'
+    Str+='  factor         : struct(db:'+str(factor[0])+','+'deg:'+str(factor[1])+')\n'
+    Str+= ')\n\n'
     return Str
 
 '''3. write  Feed: pattern: gaussian beam in near field or using Qausi optics beam'''
